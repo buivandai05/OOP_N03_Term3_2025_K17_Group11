@@ -10,8 +10,8 @@ Dự án "Quy trình khám chữa bệnh" là một hệ thống giúp theo dõi
 
 # Structural Diagram
 - Class:
-  + BenhNhan: maBenhNhan, tenBenhNhan, ngaySinh, gioiTinh, sdtBenhNhan, diaChi.
-  + BacSi:maBacSi, tenBacSi, khoa, sdtBacSi.
-  + BenhAn: maBenhAn, tenBenhNhan, tenBacSi, chuanDoan, ngayKham, khoaDieuTri.
-  + Khoa: maKhoa, tenKhoa, danhSachBN.
-  + VienPhi: maVienPhi, tenBenhNhan, phiKham, phiPhong, phiThuoc.
+  + BenhNhan : maBenhNhan, tenBenhNhan, ngaySinh, gioiTinh, sdtBenhNhan, diaChi.
+  + BacSi : maBacSi, tenBacSi, khoa, sdtBacSi.
+  + BenhAn : maBenhAn, tenBenhNhan, tenBacSi, chuanDoan, ngayKham, khoaDieuTri.
+  + Khoa : maKhoa, tenKhoa, danhSachBN.
+  + VienPhi : maVienPhi, tenBenhNhan, phiKham, phiPhong, phiThuoc.
