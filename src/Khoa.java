@@ -1,8 +1,8 @@
 public class Khoa {
-    private String maKhoa;
-    private String tenKhoa;
-    private int slgGiuong;
-    private int slgBenhNhan;
+    private static String maKhoa;
+    private static String tenKhoa;
+    private static int slgGiuong;
+    private static int slgBenhNhan;
 
     public Khoa(String maKhoa, String tenKhoa, int slgGiuong) {
         this.maKhoa = maKhoa;
@@ -42,6 +42,11 @@ public class Khoa {
     public void setSlgBenhNhan(int slgGiuong) {
         this.slgBenhNhan = slgBenhNhan;
     }
-    
-}
 
+    public static void displayInfo() {
+        System.out.println("Khoa: " + tenKhoa + " | Mã: " + maKhoa +
+                " | Số lượng giường bệnh: " + slgGiuong +
+                " | Số lượng bệnh nhân đang điều trị: " + slgBenhNhan);
+    }
+
+}
