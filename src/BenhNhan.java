@@ -6,7 +6,6 @@ public class BenhNhan {
     private String sdtBenhNhan;
     private String diaChi;
 
-    // Getters and Setters
     public String getMaBenhNhan() {
         return maBenhNhan;
     }
