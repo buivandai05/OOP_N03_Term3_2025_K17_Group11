@@ -13,5 +13,5 @@ Dự án "Quy trình khám chữa bệnh" là một hệ thống giúp theo dõi
   + BenhNhan : maBenhNhan, tenBenhNhan, ngaySinh, gioiTinh, sdtBenhNhan, diaChi.
   + BacSi : maBacSi, tenBacSi, khoa, sdtBacSi.
   + HoSoBenhAn : maBenhAn, tenBenhNhan, tenBacSi, chuanDoan, ngayKham, khoaDieuTri.
-  + Khoa : maKhoa, tenKhoa, soGiuong.
+  + Khoa : maKhoa, tenKhoa, slgGiuong,slgBenhNhan.
   + VienPhi : maVienPhi, tenBenhNhan, phiKham, phiPhong, phiThuoc.
