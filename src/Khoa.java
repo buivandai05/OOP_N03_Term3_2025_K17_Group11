@@ -1,11 +1,9 @@
 public class Khoa {
-    // ✅ Thuộc tính (biến thành viên)
     private String maKhoa;
     private String tenKhoa;
     private int slgGiuong;
     private int slgBenhNhan;
 
-    // ✅ Constructor (hàm khởi tạo)
     public Khoa(String maKhoa, String tenKhoa, int slgGiuong) {
         this.maKhoa = maKhoa;
         this.tenKhoa = tenKhoa;
@@ -13,7 +11,6 @@ public class Khoa {
         this.slgBenhNhan = 0;
     }
 
-    // ✅ Getter và Setter
     public String getMaKhoa() {
         return maKhoa;
     }
