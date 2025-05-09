@@ -1,9 +1,9 @@
 public class VienPhi {
-    private String maVienPhi;     // Mã viện phí
-    private BenhNhan benhNhan;     // Bệnh nhân liên quan (đối tượng Patient)
-    private double phiKham;      // Chi phí khám bệnh
-    private double phiThuoc;     // Chi phí thuốc
-    private double phiPhong;    // Chi phí giường bệnh (nếu có)
+    private String maVienPhi;     
+    private BenhNhan benhNhan;     
+    private double phiKham;      
+    private double phiThuoc;     
+    private double phiPhong;    
     private double tongVienPhi;
 
     public VienPhi(String maVienPhi, Patient benhNhan, double phiKham,
