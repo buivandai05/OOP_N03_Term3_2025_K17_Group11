@@ -70,11 +70,3 @@
 8. ✅ Kết thúc  
 
 ---
-
-## 📬 Liên hệ
-
-Mọi thắc mắc, góp ý vui lòng liên hệ các thành viên nhóm hoặc giảng viên hướng dẫn.
-
----
-
-> 🚀 Dự án được thực hiện trong khuôn khổ môn học **Lập trình Hướng đối tượng**.
