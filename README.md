@@ -32,28 +32,28 @@
 
 ## 🧩 Các lớp chính trong hệ thống
 
-- 🧑 `Nguoi` *(abstract class)*  
+- `Nguoi` *(abstract class)*  
   - `maNguoi`, `hoTen`, `ngaySinh`, `gioiTinh`, `soDienThoai`
 
-- 🧑‍🦽 `BenhNhan` *(extends Nguoi)*  
+- `BenhNhan` *(extends Nguoi)*  
   - `maTheBH`, `diaChi`, `hoSoBenhAn`
 
-- 👨‍⚕️ `BacSi` *(extends Nguoi)*  
+- `BacSi` *(extends Nguoi)*  
   - `chuyenKhoa`, `benhNhanPhuTrach`
 
-- 📋 `HoSoBenhAn`  
+- `HoSoBenhAn`  
   - `maHoSo`, `ngayKham`, `trieuChung`, `chuanDoan`, `donThuoc`, `bacSiPhuTrach`
 
-- 📆 `LichHen`  
+- `LichHen`  
   - `ngayHen`, `gioHen`, `benhNhan`, `bacSi`
 
-- 💊 `DonThuoc`  
+- `DonThuoc`  
   - `maDonThuoc`, `ngayKeDon`, `chuanDoan`, `bacSiKeDon`, `dsThuoc`
 
-- 💉 `Thuoc`  
+- `Thuoc`  
   - `tenThuoc`, `donViTinh`, `soLuong`, `lieuDung`
 
-- 🧾 `HoaDon`  
+- `HoaDon`  
   - `maHoaDon`,`ngayLap`, `benhNhan`, `tongTien`.
 
 ---
