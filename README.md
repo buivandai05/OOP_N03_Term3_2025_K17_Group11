@@ -25,8 +25,8 @@
 
 ## 💻 Công nghệ sử dụng
 
-- 🧠 **Ngôn ngữ lập trình:** Java  
-- 🗄️ **Cơ sở dữ liệu:** MySQL  
+- **Ngôn ngữ lập trình:** Java  
+- **Cơ sở dữ liệu:** MySQL  
 
 ---
 
@@ -60,13 +60,13 @@
 
 ## 🩺 Quy trình khám chữa bệnh
 
-1. 📝 Tiếp nhận bệnh nhân  
-2. 🔍 Kiểm tra thông tin bệnh nhân  
-3. 🗓️ Tạo lịch hẹn khám  
-4. 🧑‍⚕️ Khám bệnh  
-5. 💊 Kê đơn thuốc (nếu cần)  
-6. 🖨️ In đơn thuốc và trả kết quả  
-7. 💵 Thanh toán (nếu có)  
-8. ✅ Kết thúc  
+1. Tiếp nhận bệnh nhân  
+2. Kiểm tra thông tin bệnh nhân  
+3. Tạo lịch hẹn khám  
+4. Khám bệnh  
+5. Kê đơn thuốc (nếu cần)  
+6. In đơn thuốc và trả kết quả  
+7. Thanh toán (nếu có)  
+8. Kết thúc  
 
 ---
