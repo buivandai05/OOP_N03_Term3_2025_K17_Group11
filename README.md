@@ -5,7 +5,7 @@
 
 ---
 
-## 👥 Thành viên nhóm – OOP_Group 11
+## 👥 Thành viên nhóm – Group 11
 - Lê Thị Cẩm Ly  
 - Bùi Văn Đại  
 - Vũ Huy Đô  
