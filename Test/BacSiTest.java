@@ -1,30 +1,35 @@
+import java.util.ArrayList;
+
 public class BacSiTest {
     public static void main(String[] args) {
-        // Create an instance of TestBacSi
-        TestBacSi bacSi = new TestBacSi("BS001", "Le Thi Hoa", "Noi khoa", "0909123456", "Thu 2 - Thu 6");
+        // Tạo đối tượng BacSi với constructor đầy đủ
+        BacSi bacSi = new BacSi(
+                "BS001",
+                "Nguyễn Thị Hà",
+                "1980-01-01",
+                "Nữ",
+                "0909123456",
+                "Nội khoa",
+                new ArrayList<>() // Danh sách bệnh nhân phụ trách rỗng
+        );
 
-        // Test getter methods
-        System.out.println("Ma Bac Si: " + bacSi.getMaBacSi());
-        System.out.println("Ho Ten: " + bacSi.getHoTen());
-        System.out.println("Chuyen Khoa: " + bacSi.getChuyenKhoa());
-        System.out.println("So Dien Thoai: " + bacSi.getSoDienThoai());
-        System.out.println("Lich Lam Viec: " + bacSi.getLichLamViec());
+        // Kiểm tra các phương thức getter
+        System.out.println("Mã Bác Sĩ: " + bacSi.getMaNguoi());
+        System.out.println("Họ Tên: " + bacSi.getHoTen());
+        System.out.println("Chuyên Khoa: " + bacSi.getChuyenKhoa());
+        System.out.println("Số Điện Thoại: " + bacSi.getSoDienThoai());
 
-        // Test setter methods
-        bacSi.setMaBacSi("BS002");
-        bacSi.setHoTen("Nguyen Van C");
-        bacSi.setChuyenKhoa("Ngoai khoa");
+        // Kiểm tra các phương thức setter
+        bacSi.setMaNguoi("BS002");
+        bacSi.setHoTen("Nguyễn Thị Diệp");
+        bacSi.setChuyenKhoa("Ngoại khoa");
         bacSi.setSoDienThoai("0911122334");
-        bacSi.setLichLamViec("Thu 2 - Thu 7");
 
-        // Verify updated values
-        System.out.println("\nUpdated Information:");
-        System.out.println("Ma Bac Si: " + bacSi.getMaBacSi());
-        System.out.println("Ho Ten: " + bacSi.getHoTen());
-        System.out.println("Chuyen Khoa: " + bacSi.getChuyenKhoa());
-        System.out.println("So Dien Thoai: " + bacSi.getSoDienThoai());
-        System.out.println("Lich Lam Viec: " + bacSi.getLichLamViec());
+        // Kiểm tra thông tin đã cập nhật
+        System.out.println("\nThông Tin Đã Cập Nhật:");
+        System.out.println("Mã Bác Sĩ: " + bacSi.getMaNguoi());
+        System.out.println("Họ Tên: " + bacSi.getHoTen());
+        System.out.println("Chuyên Khoa: " + bacSi.getChuyenKhoa());
+        System.out.println("Số Điện Thoại: " + bacSi.getSoDienThoai());
     }
 }
-
-  
