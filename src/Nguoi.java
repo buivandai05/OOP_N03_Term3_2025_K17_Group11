@@ -13,5 +13,22 @@ public abstract class Nguoi {
         this.soDienThoai = soDienThoai;
     }
 
-    // Getter & Setter...
+    public Nguoi() {
+
+    }
+
+    public String getMaNguoi() { return maNguoi; }
+    public void setMaNguoi(String maNguoi) { this.maNguoi = maNguoi; }
+
+    public String getHoTen() { return hoTen; }
+    public void setHoTen(String hoTen) { this.hoTen = hoTen; }
+
+    public String getNgaySinh() { return ngaySinh; }
+    public void setNgaySinh(String ngaySinh) { this.ngaySinh = ngaySinh; }
+
+    public String getGioiTinh() { return gioiTinh; }
+    public void setGioiTinh(String gioiTinh) { this.gioiTinh = gioiTinh; }
+
+    public String getSoDienThoai() { return soDienThoai; }
+    public void setSoDienThoai(String soDienThoai) { this.soDienThoai = soDienThoai; }
 }
