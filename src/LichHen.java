@@ -11,5 +11,15 @@ public class LichHen {
         this.bacSi = bacSi;
     }
 
-    // Getter & Setter...
+    public String getNgayHen() {return ngayHen;}
+    public void setNgayHen(String ngayHen) {this.ngayHen = ngayHen;}
+
+    public String getGioHen() {return gioHen;}
+    public void setGioHen(String gioHen) {this.gioHen = gioHen;}
+
+    public BenhNhan getBenhNhan() {return benhNhan;}
+    public void setBenhNhan(BenhNhan benhNhan) {this.benhNhan = benhNhan;}
+
+    public BacSi getBacSi() {return bacSi;}
+    public void setBacSi(BacSi bacSi) {this.bacSi = bacSi;}
 }
