@@ -11,5 +11,10 @@ public class BacSi extends Nguoi {
         this.benhNhanPhuTrach = benhNhanPhuTrach;
     }
 
-    // Getter & Setter...
+    public String getChuyenKhoa() { return chuyenKhoa; }
+    public void setChuyenKhoa(String chuyenKhoa) { this.chuyenKhoa = chuyenKhoa; }
+
+    public List<BenhNhan> getBenhNhanPhuTrach() { return benhNhanPhuTrach; }
+    public void setBenhNhanPhuTrach(List<BenhNhan> benhNhanPhuTrach) { this.benhNhanPhuTrach = benhNhanPhuTrach; }
+
 }
