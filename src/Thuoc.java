@@ -11,5 +11,15 @@ public class Thuoc {
         this.lieuDung = lieuDung;
     }
 
-    // Getter & Setter...
+    public String getTenThuoc() {return tenThuoc;}
+    public void setTenThuoc(String tenThuoc) {this.tenThuoc = tenThuoc;}
+
+    public String getDonViTinh() {return donViTinh;}
+    public void setDonViTinh(String donViTinh) {this.donViTinh = donViTinh;}
+
+    public int getSoLuong() {return soLuong;}
+    public void setSoLuong(int soLuong) {this.soLuong = soLuong;}
+
+    public String getLieuDung() {return lieuDung;}
+    public void setLieuDung(String lieuDung) {this.lieuDung = lieuDung;}
 }
