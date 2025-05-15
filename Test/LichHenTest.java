@@ -21,6 +21,10 @@ public class TestLichHen {
         lichHen.setBenhNhan(newBenhNhan);
         lichHen.setBacSi(newBacSi);
 
-        
+        // Verify updates
+        System.out.println("Updated Ngay Hen: " + lichHen.getNgayHen());
+        System.out.println("Updated Gio Hen: " + lichHen.getGioHen());
+        System.out.println("Updated Benh Nhan: " + lichHen.getBenhNhan().getName());
+        System.out.println("Updated Bac Si: " + lichHen.getBacSi().getName());
     }
 }
