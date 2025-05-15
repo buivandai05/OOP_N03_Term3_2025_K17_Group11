@@ -66,7 +66,7 @@
 4. Khám bệnh  
 5. Kê đơn thuốc (nếu cần)  
 6. In đơn thuốc và trả kết quả  
-7. Thanh toán (nếu có)  
+7. Thanh toán 
 8. Kết thúc  
 
 ---
