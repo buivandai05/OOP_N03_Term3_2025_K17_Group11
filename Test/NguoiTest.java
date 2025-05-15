@@ -5,4 +5,11 @@ class TestNguoi extends Nguoi {
     }
 }
 
+public class NguoiTest {
+    public static void main(String[] args) {
+        // Create an instance of TestNguoi
+        TestNguoi nguoi = new TestNguoi("001", "Nguyen Van A", "1990-01-01", "Male", "0123456789");
 
+        
+    }
+}
