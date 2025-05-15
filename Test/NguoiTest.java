@@ -17,6 +17,13 @@ public class NguoiTest {
         System.out.println("Gioi Tinh: " + nguoi.getGioiTinh());
         System.out.println("So Dien Thoai: " + nguoi.getSoDienThoai());
 
+        // Test setter methods
+        nguoi.setMaNguoi("002");
+        nguoi.setHoTen("Tran Thi B");
+        nguoi.setNgaySinh("1995-05-10");
+        nguoi.setGioiTinh("Female");
+        nguoi.setSoDienThoai("0987654321");
+
         
     }
 }
