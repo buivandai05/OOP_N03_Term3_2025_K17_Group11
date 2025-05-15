@@ -24,6 +24,12 @@ public class NguoiTest {
         nguoi.setGioiTinh("Female");
         nguoi.setSoDienThoai("0987654321");
 
-        
+        // Verify updated values
+        System.out.println("\nUpdated Information:");
+        System.out.println("Ma Nguoi: " + nguoi.getMaNguoi());
+        System.out.println("Ho Ten: " + nguoi.getHoTen());
+        System.out.println("Ngay Sinh: " + nguoi.getNgaySinh());
+        System.out.println("Gioi Tinh: " + nguoi.getGioiTinh());
+        System.out.println("So Dien Thoai: " + nguoi.getSoDienThoai());
     }
 }
