@@ -15,5 +15,18 @@ public class DonThuoc {
         this.dsThuoc = dsThuoc;
     }
 
-    // Getter & Setter...
+    public String getMaDonThuoc() {return maDonThuoc;}
+    public void setMaDonThuoc(String maDonThuoc) {this.maDonThuoc = maDonThuoc;}
+
+    public String getNgayKeDon() {return ngayKeDon;}
+    public void setNgayKeDon(String ngayKeDon) {this.ngayKeDon = ngayKeDon;}
+
+    public String getChuanDoan() {return chuanDoan;}
+    public void setChuanDoan(String chuanDoan) {this.chuanDoan = chuanDoan;}
+
+    public BacSi getBacSiKeDon() {return bacSiKeDon;}
+    public void setBacSiKeDon(BacSi bacSiKeDon) {this.bacSiKeDon = bacSiKeDon;}
+
+    public List<Thuoc> getDsThuoc() {return dsThuoc;}
+    public void setDsThuoc(List<Thuoc> dsThuoc) {this.dsThuoc = dsThuoc;}
 }
