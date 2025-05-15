@@ -1,71 +1,93 @@
+import java.util.ArrayList;
+import java.util.List;
 
 public class HoSoBenhAnTest {
     public static void main(String[] args) {
-  
-        BacSi bacSi1 = new BacSi("BS001", "Dr. Nguyen");
+        // Tạo bác sĩ
+        BacSi bacSi1 = new BacSi(
+                "BS001",
+                "Bác sĩ Nguyễn",
+                "1975-05-15",
+                "Nam",
+                "0909123456",
+                "Nội khoa",
+                new ArrayList<>()
+        );
 
-        
-        Thuoc thuoc1 = new Thuoc("T001", "Paracetamol");
-        Thuoc thuoc2 = new Thuoc("T002", "Amoxicillin");
+        // Tạo các loại thuốc
+        Thuoc thuoc1 = new Thuoc("Paracetamol", "viên", 10, "2 viên/ngày");
+        Thuoc thuoc2 = new Thuoc("Amoxicillin", "viên", 15, "3 viên/ngày");
 
         List<Thuoc> thuocList = new ArrayList<>();
         thuocList.add(thuoc1);
         thuocList.add(thuoc2);
 
-    
-        DonThuoc donThuoc = new DonThuoc("DT001", "2025-05-15", "nu", bacSi1, thuocList);
+        // Tạo đơn thuốc
+        DonThuoc donThuoc = new DonThuoc("DT001", "2025-05-15", "Cúm", bacSi1, thuocList);
 
-     
-        HoSoBenhAn hoSoBenhAn = new HoSoBenhAn("HS001", "2025-05-15", "Fever, Cough", "Flu", donThuoc, bacSi1);
+        // Tạo hồ sơ bệnh án
+        HoSoBenhAn hoSoBenhAn = new HoSoBenhAn("HS001", "2025-05-15", "Sốt, Ho", "Cúm", donThuoc, bacSi1);
 
-        // Test getter methods
-        System.out.println("Testing Getter Methods:");
-        System.out.println("Ma Ho So: " + hoSoBenhAn.getMaHoSo());
-        System.out.println("Ngay Kham: " + hoSoBenhAn.getNgayKham());
-        System.out.println("Trieu Chung: " + hoSoBenhAn.getTrieuChung());
-        System.out.println("Chuan Doan: " + hoSoBenhAn.getChuanDoan());
-        System.out.println("Bac Si Phu Trach: " + hoSoBenhAn.getBacSiPhuTrach().getHoTen());
-        System.out.println("Don Thuoc: ");
-        System.out.println("  Ma Don Thuoc: " + hoSoBenhAn.getDonThuoc().getMaDonThuoc());
-        System.out.println("  Ngay Ke Don: " + hoSoBenhAn.getDonThuoc().getNgayKeDon());
-        System.out.println("  Chuan Doan: " + hoSoBenhAn.getDonThuoc().getChuanDoan());
-        System.out.println("  Bac Si Ke Don: " + hoSoBenhAn.getDonThuoc().getBacSiKeDon().getHoTen());
-        System.out.println("  Thuoc: ");
+        // Kiểm tra các phương thức getter
+        System.out.println("Kiểm Tra Phương Thức Getter:\n");
+        System.out.println("Mã Hồ Sơ: " + hoSoBenhAn.getMaHoSo());
+        System.out.println("Ngày Khám: " + hoSoBenhAn.getNgayKham());
+        System.out.println("Triệu Chứng: " + hoSoBenhAn.getTrieuChung());
+        System.out.println("Chuẩn Đoán: " + hoSoBenhAn.getChuanDoan());
+        System.out.println("Bác Sĩ Phụ Trách: " + hoSoBenhAn.getBacSiPhuTrach().getHoTen());
+        System.out.println("Đơn Thuốc: ");
+        System.out.println("  Mã Đơn Thuốc: " + hoSoBenhAn.getDonThuoc().getMaDonThuoc());
+        System.out.println("  Ngày Kê Đơn: " + hoSoBenhAn.getDonThuoc().getNgayKeDon());
+        System.out.println("  Chuẩn Đoán: " + hoSoBenhAn.getDonThuoc().getChuanDoan());
+        System.out.println("  Bác Sĩ Kê Đơn: " + hoSoBenhAn.getDonThuoc().getBacSiKeDon().getHoTen());
+        System.out.println("  Thuốc: ");
         for (Thuoc thuoc : hoSoBenhAn.getDonThuoc().getDsThuoc()) {
-            System.out.println("    Ma Thuoc: " + thuoc.getMaThuoc() + ", Ten Thuoc: " + thuoc.getTenThuoc());
+            System.out.println("    Tên Thuốc: " + thuoc.getTenThuoc() + ", Số lượng: " + thuoc.getSoLuong() +
+                    ", Đơn vị: " + thuoc.getDonViTinh() + ", Liều dùng: " + thuoc.getLieuDung());
         }
 
-        
-        System.out.println("\nTesting Setter Methods:");
+        // Kiểm tra các phương thức setter
+        System.out.println("\nKiểm Tra Phương Thức Setter:");
         hoSoBenhAn.setMaHoSo("HS002");
         hoSoBenhAn.setNgayKham("2025-05-16");
-        hoSoBenhAn.setTrieuChung("Headache, Dizziness");
-        hoSoBenhAn.setChuanDoan("tieuduong");
+        hoSoBenhAn.setTrieuChung("Đau đầu, Chóng mặt");
+        hoSoBenhAn.setChuanDoan("Đau nửa đầu");
 
-        
-        BacSi bacSiNew = new BacSi("BS002", "Dr. Tran");
-        Thuoc thuoc3 = new Thuoc("T003", "Ibuprofen");
+        // Tạo bác sĩ và đơn thuốc mới
+        BacSi bacSiMoi = new BacSi(
+                "BS002",
+                "Bác sĩ Trần",
+                "1980-06-20",
+                "Nữ",
+                "0912345678",
+                "Ngoại khoa",
+                new ArrayList<>()
+        );
+
+        Thuoc thuoc3 = new Thuoc("Ibuprofen", "viên", 12, "2 viên/ngày");
         thuocList.add(thuoc3);
-        DonThuoc donThuocNew = new DonThuoc("DT002", "2025-05-16", "tieuduong", bacSiNew, thuocList);
 
-        hoSoBenhAn.setDonThuoc(donThuocNew);
-        hoSoBenhAn.setBacSiPhuTrach(bacSiNew);
+        DonThuoc donThuocMoi = new DonThuoc("DT002", "2025-05-16", "Đau nửa đầu", bacSiMoi, thuocList);
 
-        
-        System.out.println("\nUpdated Information:");
-        System.out.println("Ma Ho So: " + hoSoBenhAn.getMaHoSo());
-        System.out.println("Ngay Kham: " + hoSoBenhAn.getNgayKham());
-        System.out.println("Trieu Chung: " + hoSoBenhAn.getTrieuChung());
-        System.out.println("Chuan Doan: " + hoSoBenhAn.getChuanDoan());
-        System.out.println("Bac Si Phu Trach: " + hoSoBenhAn.getBacSiPhuTrach().getHoTen());
-        System.out.println("Don Thuoc: ");
-        System.out.println("  Ma Don Thuoc: " + hoSoBenhAn.getDonThuoc().getMaDonThuoc());
-        System.out.println("  Ngay Ke Don: " + hoSoBenhAn.getDonThuoc().getNgayKeDon());
-        System.out.println("  Chuan Doan: " + hoSoBenhAn.getDonThuoc().getChuanDoan());
-        System.out.println("  Bac Si Ke Don: " + hoSoBenhAn.getDonThuoc().getBacSiKeDon().getHoTen());
-        System.out.println("  Thuoc: ");
+        hoSoBenhAn.setDonThuoc(donThuocMoi);
+        hoSoBenhAn.setBacSiPhuTrach(bacSiMoi);
+
+        // In thông tin đã cập nhật
+        System.out.println("\nThông Tin Đã Cập Nhật:");
+        System.out.println("Mã Hồ Sơ: " + hoSoBenhAn.getMaHoSo());
+        System.out.println("Ngày Khám: " + hoSoBenhAn.getNgayKham());
+        System.out.println("Triệu Chứng: " + hoSoBenhAn.getTrieuChung());
+        System.out.println("Chuẩn Đoán: " + hoSoBenhAn.getChuanDoan());
+        System.out.println("Bác Sĩ Phụ Trách: " + hoSoBenhAn.getBacSiPhuTrach().getHoTen());
+        System.out.println("Đơn Thuốc: ");
+        System.out.println("  Mã Đơn Thuốc: " + hoSoBenhAn.getDonThuoc().getMaDonThuoc());
+        System.out.println("  Ngày Kê Đơn: " + hoSoBenhAn.getDonThuoc().getNgayKeDon());
+        System.out.println("  Chuẩn Đoán: " + hoSoBenhAn.getDonThuoc().getChuanDoan());
+        System.out.println("  Bác Sĩ Kê Đơn: " + hoSoBenhAn.getDonThuoc().getBacSiKeDon().getHoTen());
+        System.out.println("  Thuốc: ");
         for (Thuoc thuoc : hoSoBenhAn.getDonThuoc().getDsThuoc()) {
-            System.out.println("    Ma Thuoc: " + thuoc.getMaThuoc() + ", Ten Thuoc: " + thuoc.getTenThuoc());
+            System.out.println("    Tên Thuốc: " + thuoc.getTenThuoc() + ", Số lượng: " + thuoc.getSoLuong() +
+                    ", Đơn vị: " + thuoc.getDonViTinh() + ", Liều dùng: " + thuoc.getLieuDung());
         }
     }
 }
