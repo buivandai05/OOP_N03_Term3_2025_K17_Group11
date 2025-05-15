@@ -1,36 +1,30 @@
-public class Basi{
-  private String maBacsi;
-  private String hoten;
-  private String chuyenkhoa;
-  private String std;
-  private String lichlamviec;
+public class BacSiTest {
+    public static void main(String[] args) {
+        // Create an instance of TestBacSi
+        TestBacSi bacSi = new TestBacSi("BS001", "Le Thi Hoa", "Noi khoa", "0909123456", "Thu 2 - Thu 6");
 
-  public Bacsi(String maBacsi, String hoten, String chuyenkhoa, String std. String lichlamviec){
-    this.maBacsi=maBacsi;
-    this.hoTen = hoTen;
-    this.chuyenKhoa = chuyenKhoa;
-    this.soDienThoai = soDienThoai;
-    this.lichLamViec = lichLamViec;
+        // Test getter methods
+        System.out.println("Ma Bac Si: " + bacSi.getMaBacSi());
+        System.out.println("Ho Ten: " + bacSi.getHoTen());
+        System.out.println("Chuyen Khoa: " + bacSi.getChuyenKhoa());
+        System.out.println("So Dien Thoai: " + bacSi.getSoDienThoai());
+        System.out.println("Lich Lam Viec: " + bacSi.getLichLamViec());
+
+        // Test setter methods
+        bacSi.setMaBacSi("BS002");
+        bacSi.setHoTen("Nguyen Van C");
+        bacSi.setChuyenKhoa("Ngoai khoa");
+        bacSi.setSoDienThoai("0911122334");
+        bacSi.setLichLamViec("Thu 2 - Thu 7");
+
+        // Verify updated values
+        System.out.println("\nUpdated Information:");
+        System.out.println("Ma Bac Si: " + bacSi.getMaBacSi());
+        System.out.println("Ho Ten: " + bacSi.getHoTen());
+        System.out.println("Chuyen Khoa: " + bacSi.getChuyenKhoa());
+        System.out.println("So Dien Thoai: " + bacSi.getSoDienThoai());
+        System.out.println("Lich Lam Viec: " + bacSi.getLichLamViec());
     }
-  public String getMaBacSi() { return maBacSi; }
-    public void setMaBacSi(String maBacSi) {
-      
-      this.maBacSi = maBacSi;
-    }
-
-    public String getHoTen() { 
-      return hoTen;
-      
-                             }
-    public void setHoTen(String hoTen) { this.hoTen = hoTen; }
-
-    public String getChuyenKhoa() { return chuyenKhoa; }
-    public void setChuyenKhoa(String chuyenKhoa) { this.chuyenKhoa = chuyenKhoa; }
-
-    public String getSoDienThoai() { return soDienThoai; }
-    public void setSoDienThoai(String soDienThoai) { this.soDienThoai = soDienThoai; }
-
-    public String getLichLamViec() { return lichLamViec; }
-    public void setLichLamViec(String lichLamViec) { this.lichLamViec = lichLamViec; }
 }
+
   
