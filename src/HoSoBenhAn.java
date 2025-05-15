@@ -16,5 +16,22 @@ public class HoSoBenhAn {
         this.bacSiPhuTrach = bacSiPhuTrach;
     }
 
-    // Getter & Setter...
+    public String getMaHoSo() {return maHoSo;}
+    public void setMaHoSo(String maHoSo) {this.maHoSo = maHoSo;}
+
+    public String getNgayKham() {return ngayKham;}
+    public void setNgayKham(String ngayKham) {this.ngayKham = ngayKham;}
+
+    public String getTrieuChung() {return trieuChung;}
+    public void setTrieuChung(String trieuChung) {this.trieuChung = trieuChung;}
+
+    public void setChuanDoan(String chuanDoan) {this.chuanDoan = chuanDoan;}
+    public String getChuanDoan() {return chuanDoan;}
+
+    public DonThuoc getDonThuoc() {return donThuoc;}
+    public void setDonThuoc(DonThuoc donThuoc) {this.donThuoc = donThuoc;}
+
+    public BacSi getBacSiPhuTrach() {return bacSiPhuTrach;}
+    public void setBacSiPhuTrach(BacSi bacSiPhuTrach) {this.bacSiPhuTrach = bacSiPhuTrach;}
+
 }
