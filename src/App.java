@@ -4,15 +4,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         // Tạo bác sĩ
-        BacSi bacSi = new BacSi(
-                "BS01",
-                "Trần Văn B",
-                "1970-05-10",
-                "Nam",
-                "0123456789",
-                "Nội tổng quát",
-                new ArrayList<>()
-        );
+        BacSi bacSi = new BacSi("BS01","Trần Văn B","1970-05-10","Nam","0123456789","Nội tổng quát",new ArrayList<>());
 
         // Tạo thuốc
         Thuoc thuoc1 = new Thuoc("Paracetamol", "viên", 10, "2 viên/ngày");
@@ -23,13 +15,7 @@ public class Main {
         danhSachThuoc.add(thuoc2);
 
         // Tạo đơn thuốc
-        DonThuoc donThuoc = new DonThuoc(
-                "DT01",
-                "2025-05-15",
-                "Sốt, viêm họng",
-                bacSi,
-                danhSachThuoc
-        );
+        DonThuoc donThuoc = new DonThuoc("DT01","2025-05-15","Sốt, viêm họng",bacSi,danhSachThuoc);
 
         // Tạo bệnh nhân
         BenhNhan benhNhan = new BenhNhan();
@@ -39,12 +25,7 @@ public class Main {
         benhNhan.setDiaChi("Hà Nội");
 
         // Tạo hóa đơn
-        HoaDon hoaDon = new HoaDon(
-                "HD01",
-                "2025-05-15",
-                benhNhan,
-                250000.0
-        );
+        HoaDon hoaDon = new HoaDon("HD01","2025-05-15",benhNhan,250000.0);
 
         // In thông tin cơ bản
         System.out.println("=== Thông tin hóa đơn ===");
