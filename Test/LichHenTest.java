@@ -13,6 +13,14 @@ public class TestLichHen {
         System.out.println("Benh Nhan: " + lichHen.getBenhNhan().getName());
         System.out.println("Bac Si: " + lichHen.getBacSi().getName());
 
+        // Test setters
+        lichHen.setNgayHen("2025-05-21");
+        lichHen.setGioHen("11:00 AM");
+        BenhNhan newBenhNhan = new BenhNhan("Le Thi C");
+        BacSi newBacSi = new BacSi("Dr. Nguyen Van D");
+        lichHen.setBenhNhan(newBenhNhan);
+        lichHen.setBacSi(newBacSi);
+
         
     }
 }
