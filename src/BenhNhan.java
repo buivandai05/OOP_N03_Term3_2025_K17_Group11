@@ -13,4 +13,16 @@ public class BenhNhan extends Nguoi {
         this.hoSoBenhAn = hoSoBenhAn;
     }
 
+    public BenhNhan() {
+        super();
+    }
+
+    public String getMaTheBH() {return maTheBH;}
+    public void setMaTheBH(String maTheBH) {this.maTheBH = maTheBH;}
+
+    public String getDiaChi() {return diaChi;}
+    public void setDiaChi(String diaChi) {this.diaChi = diaChi;}
+
+    public List<HoSoBenhAn> getHoSoBenhAn() {return hoSoBenhAn;}
+    public void setHoSoBenhAn(List<HoSoBenhAn> hoSoBenhAn) {this.hoSoBenhAn = hoSoBenhAn;}
 }
