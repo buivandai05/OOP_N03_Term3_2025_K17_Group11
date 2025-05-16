@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+public class App {
     public static void main(String[] args) {
         // Tạo bác sĩ
         BacSi bacSi = new BacSi("BS01","Trần Văn B","1970-05-10","Nam","0123456789","Nội tổng quát",new ArrayList<>());
