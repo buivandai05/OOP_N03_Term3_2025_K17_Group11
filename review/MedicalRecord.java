@@ -28,7 +28,7 @@ public class MedicalRecord {
         return subRecords;
     }
 
-    // Recursive method to display the entire hierarchy
+    // Recursive method
     public void displayHierarchy(String indent) {
         System.out.println(indent + "Record ID: " + recordId + " - " + description);
         for (MedicalRecord sub : subRecords) {
@@ -36,7 +36,7 @@ public class MedicalRecord {
         }
     }
 
-    // Example usage
+    // Vi du
     public static void main(String[] args) {
         MedicalRecord mainRecord = new MedicalRecord("001", "Patient Master Record");
         MedicalRecord visit1 = new MedicalRecord("001-1", "Visit: 2025-05-10");
