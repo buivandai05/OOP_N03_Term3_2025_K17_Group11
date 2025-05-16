@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class HoaDonTest {
     public static void main(String[] args) {
-        // Create a sample BacSi instance
         BacSi bacSi = new BacSi(
             "BS01",                      // maNguoi
             "Tran Van B",                // hoTen
@@ -13,7 +12,6 @@ public class HoaDonTest {
             new ArrayList<>()            // benhNhanPhuTrach
         );
 
-        // Create a sample DonThuoc instance
         Thuoc thuoc1 = new Thuoc("Paracetamol", "vien", 10, "2 vien/ngay");
         Thuoc thuoc2 = new Thuoc("Amoxicillin", "vien", 15, "3 vien/ngay");
         ArrayList<Thuoc> danhSachThuoc = new ArrayList<>();
@@ -28,7 +26,6 @@ public class HoaDonTest {
             danhSachThuoc                // dsThuoc
         );
 
-        // Create a sample BenhNhan instance
         BenhNhan benhNhan = new BenhNhan(
             "BN01",                      // maNguoi
             "Nguyen Van A",              // hoTen
@@ -40,7 +37,6 @@ public class HoaDonTest {
             new ArrayList<>()            // hoSoBenhAn
         );
 
-        // Create a HoaDon instance
         HoaDon hoaDon = new HoaDon(
             "HD01",                      // maHoaDon
             "2025-05-15",                // ngayLap
@@ -48,14 +44,12 @@ public class HoaDonTest {
             250000.0                     // tongTien
         );
 
-        // Testing getters
         System.out.println("=== Testing Getters ===");
         System.out.println("Ma Hoa Don: " + hoaDon.getMaHoaDon());
         System.out.println("Ngay Lap: " + hoaDon.getNgayLap());
         System.out.println("Benh Nhan: " + hoaDon.getBenhNhan().getHoTen());
         System.out.println("Tong Tien: " + hoaDon.getTongTien());
 
-        // Testing setters
         System.out.println("\n=== Testing Setters ===");
         hoaDon.setMaHoaDon("HD02");
         hoaDon.setNgayLap("2025-05-16");
@@ -72,7 +66,6 @@ public class HoaDonTest {
         hoaDon.setBenhNhan(newBenhNhan);
         hoaDon.setTongTien(300000.0);
 
-        // Verifying updated values
         System.out.println("Ma Hoa Don: " + hoaDon.getMaHoaDon());
         System.out.println("Ngay Lap: " + hoaDon.getNgayLap());
         System.out.println("Benh Nhan: " + hoaDon.getBenhNhan().getHoTen());
