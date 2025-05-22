@@ -47,7 +47,7 @@
 - `LichHen`  
   - `ngayHen`, `gioHen`, `benhNhan`, `bacSi`
  
--`PhongDieuTri`
+- `PhongDieuTri`
   - `maPhong`, `tenPhong`, `sucChua`, `trangThai`
 
 - `DonThuoc`  
