@@ -39,17 +39,14 @@
 
 ## 🧩 Các lớp chính trong hệ thống
 
-- `Nguoi` *(abstract class)*  
-  - `maNguoi`, `hoTen`, `ngaySinh`, `gioiTinh`
+- `BenhVien`   
+  - `dsBenhNhan`, `dsPhongDieuTri`
 
-- `BenhNhan` *(extends Nguoi)*  
-  - `maBenhNhan`, `diaChi`, `sđt`
+- `BenhNhan`
+  - `maBenhNhan`, `tenBenhNhan`, `tuoi`, `gioiTinh`, `diaChi`, `sđt`, `bacSiPhuTrach`
 
-- `BacSi` *(extends Nguoi)*  
-  - `maBacSi`,`chuyenKhoa`
-
-- `HoSoBenhAn`  
-  - `maHoSo`, `maBenhNhan`, `maBacSi`, `trieuChung`, `chuanDoan`
+- `BacSi`
+  - `maBacSi`, `tenBacSi`,`chuyenKhoa`, `sđt`
 
 - `PhongDieuTri`
   - `maPhong`, `tenPhong`, `sucChua`, `danhSachBN`
