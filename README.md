@@ -1,4 +1,4 @@
-# 🏥 Quản Lý Quy Trình Khám Chữa Bệnh
+# 🏥 Quản Lý Bệnh Viện
 
 ## 👥 Nhóm thực hiện: **OOP_Group 11**
 
@@ -11,15 +11,22 @@
 
 ## 📌 Giới thiệu dự án
 
-**Quản lý quy trình khám chữa bệnh** là một ứng dụng hỗ trợ theo dõi và quản lý toàn bộ quy trình khám chữa bệnh tại các cơ sở y tế. Hệ thống bao gồm các chức năng từ tiếp nhận bệnh nhân, khám chữa bệnh, điều trị nội trú đến thanh toán viện phí.
+**Quản Lý Bệnh Viện ** là một hệ thống quản lý tại bệnh viện, giúp tối ưu hóa và cải thiện hiệu quả hoạt động của các bệnh viện. Hệ thống cho phép quản lý hồ sơ bệnh nhân, bác sĩ.
 
 ---
 
 ## 🎯 Mục tiêu của dự án
 
-- 🧾 Quản lý thông tin bệnh nhân, bác sĩ và nhân viên y tế.  
-- 📅 Hỗ trợ quy trình đăng ký khám, xếp lịch, khám bệnh, kê đơn thuốc và thanh toán.  
-- 📊 Cung cấp báo cáo và thống kê cho người quản lý cơ sở y tế.  
+- 🧾 Quản lý thông tin bệnh nhân, bác sĩ, phòng điều trị, hồ sơ bệnh án.  
+
+---
+
+
+🩺 Chức Năng Chính
+- Quản lý bệnh nhân: thêm, sửa, xóa thông tin bệnh nhân.
+- Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng.
+- Phân công bệnh nhân vào phòng điều trị: thêm hoặc xóa bệnh nhân khỏi phòng.
+- Tạo hồ sơ bệnh án: lưu trữ thông tin bệnh lý, ngày khám, bác sĩ điều trị, phương pháp điều trị, và kết quả.
 
 ---
 
@@ -33,31 +40,19 @@
 ## 🧩 Các lớp chính trong hệ thống
 
 - `Nguoi` *(abstract class)*  
-  - `maNguoi`, `hoTen`, `ngaySinh`, `gioiTinh`, `soDienThoai`
+  - `maNguoi`, `hoTen`, `ngaySinh`, `gioiTinh`
 
 - `BenhNhan` *(extends Nguoi)*  
-  - `maTheBH`, `diaChi`, `hoSoBenhAn`
+  - `maBenhNhan`, `diaChi`, `sđt`
 
 - `BacSi` *(extends Nguoi)*  
-  - `chuyenKhoa`, `benhNhanPhuTrach`
+  - `maBacSi`,`chuyenKhoa`
 
 - `HoSoBenhAn`  
-  - `maHoSo`, `trieuChung`, `chuanDoan`, `maBacSi`
+  - `maHoSo`, `maBenhNhan`, `maBacSi`, `trieuChung`, `chuanDoan`
 
 - `PhongDieuTri`
-  - `maPhong`, `tenPhong`, `sucChua`, `trangThai`
+  - `maPhong`, `tenPhong`, `sucChua`, `danhSachBN`
 
 ---
 
-## 🩺 Quy trình khám chữa bệnh
-
-1. Tiếp nhận bệnh nhân  
-2. Kiểm tra thông tin bệnh nhân  
-3. Tạo lịch hẹn khám  
-4. Khám bệnh  
-5. Kê đơn thuốc (nếu cần)  
-6. In đơn thuốc và trả kết quả  
-7. Thanh toán 
-8. Kết thúc  
-
----
