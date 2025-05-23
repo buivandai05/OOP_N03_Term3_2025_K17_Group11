@@ -42,22 +42,10 @@
   - `chuyenKhoa`, `benhNhanPhuTrach`
 
 - `HoSoBenhAn`  
-  - `maHoSo`, `ngayKham`, `trieuChung`, `chuanDoan`, `donThuoc`, `bacSiPhuTrach`
+  - `maHoSo`, `trieuChung`, `chuanDoan`, `maBacSi`
 
-- `LichHen`  
-  - `ngayHen`, `gioHen`, `benhNhan`, `bacSi`
- 
 - `PhongDieuTri`
   - `maPhong`, `tenPhong`, `sucChua`, `trangThai`
-
-- `DonThuoc`  
-  - `maDonThuoc`, `ngayKeDon`, `chuanDoan`, `bacSiKeDon`, `dsThuoc`
-
-- `Thuoc`  
-  - `tenThuoc`, `donViTinh`, `soLuong`, `lieuDung`
-
-- `HoaDon`  
-  - `maHoaDon`,`ngayLap`, `benhNhan`, `tongTien`.
 
 ---
 
