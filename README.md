@@ -11,7 +11,7 @@
 
 ## 📌 Giới thiệu dự án
 
-**Quản Lý Bệnh Viện ** là một hệ thống quản lý tại bệnh viện, giúp tối ưu hóa và cải thiện hiệu quả hoạt động của các bệnh viện. Hệ thống cho phép quản lý hồ sơ bệnh nhân, bác sĩ.
+**Quản Lý Bệnh Viện** là một hệ thống quản lý tại bệnh viện, giúp tối ưu hóa và cải thiện hiệu quả hoạt động của các bệnh viện. Hệ thống cho phép quản lý hồ sơ bệnh nhân, bác sĩ.
 
 ---
 
