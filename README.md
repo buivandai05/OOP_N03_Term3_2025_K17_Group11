@@ -34,7 +34,7 @@
 
 - `BenhNhan`
   - `maBenhNhan`, `tenBenhNhan`, `tuoi`, `gioiTinh`, `diaChi`, `sđt`, `maPhong`, `chuanDoan`
-  - 
+
 - `PhongDieuTri`
   - `maPhong`, `tenPhong`, `khoa`, `sucChua`, `dsBenhNhan`, `MaBacSi` 
     
