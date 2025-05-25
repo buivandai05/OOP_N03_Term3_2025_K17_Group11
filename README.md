@@ -15,13 +15,6 @@
 
 ---
 
-## 🎯 Mục tiêu của dự án
-
-- 🧾 Quản lý thông tin bệnh nhân, bác sĩ, phòng điều trị, hồ sơ bệnh án.  
-
----
-
-
 🩺 Chức Năng Chính
 - Quản lý bệnh nhân: thêm, sửa, xóa thông tin bệnh nhân.
 - Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng, thêm hoặc xóa bênh nhân khỏi phòng.
@@ -49,4 +42,5 @@
   - `maBacSi`, `tenBacSi`,`chuyenKhoa`, `sđt`, `dsBenhNhan`
 
 ---
+
 
