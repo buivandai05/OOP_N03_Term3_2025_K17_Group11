@@ -24,9 +24,9 @@
 
 🩺 Chức Năng Chính
 - Quản lý bệnh nhân: thêm, sửa, xóa thông tin bệnh nhân.
-- Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng.
-- Phân công bệnh nhân vào phòng điều trị: thêm hoặc xóa bệnh nhân khỏi phòng.
-- Tạo hồ sơ bệnh án: lưu trữ thông tin bệnh lý, ngày khám, bác sĩ điều trị, phương pháp điều trị, và kết quả.
+- Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng, thêm hoặc xóa bênh nhân khỏi phòng.
+- Quản lý bác sĩ: thêm, sửa, xóa thông tin bác sĩ, thêm hoặc xóa phòng phụ trách cho bác sĩ.
+- Lưu thông tin bệnh nhân ra file.
 
 ---
 
@@ -39,17 +39,14 @@
 
 ## 🧩 Các lớp chính trong hệ thống
 
-- `BenhVien`   
-  - `dsBenhNhan`, `dsPhongDieuTri`
-
 - `BenhNhan`
-  - `maBenhNhan`, `tenBenhNhan`, `tuoi`, `gioiTinh`, `diaChi`, `sđt`, `bacSiPhuTrach`
-
-- `BacSi`
-  - `maBacSi`, `tenBacSi`,`chuyenKhoa`, `sđt`
-
+  - `maBenhNhan`, `tenBenhNhan`, `tuoi`, `gioiTinh`, `diaChi`, `sđt`, `maPhong`, `chuanDoan`
+  - 
 - `PhongDieuTri`
-  - `maPhong`, `tenPhong`, `sucChua`, `danhSachBN`
+  - `maPhong`, `tenPhong`, `khoa`, `sucChua`, `dsBenhNhan`, `MaBacSi` 
+    
+- `BacSi`
+  - `maBacSi`, `tenBacSi`,`chuyenKhoa`, `sđt`, `dsBenhNhan`
 
 ---
 
