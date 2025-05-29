@@ -94,5 +94,9 @@ public class BenhVienTest {
         assertNull(benhVien.timPhongTheoMa("P999"));
     }
 
-
+    @Test
+    public void testXoaPhong() {
+        benhVien.xoaPhong("P001");
+        assertNull(benhVien.timPhongTheoMa("P001"));
+    }
 }
