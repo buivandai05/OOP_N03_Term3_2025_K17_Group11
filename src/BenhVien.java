@@ -12,9 +12,7 @@ public class BenhVien {
         this.danhSachPhong = new ArrayList<>();
     }
 
-    // ================================
     // BÁC SĨ
-    // ================================
     public void themBacSi(BacSi bs) {
         danhSachBacSi.add(bs);
     }
@@ -47,9 +45,7 @@ public class BenhVien {
         }
     }
 
-    // ================================
     // BỆNH NHÂN
-    // ================================
     public void themBenhNhan(BenhNhan bn) {
         danhSachBenhNhan.add(bn);
     }
@@ -75,9 +71,7 @@ public class BenhVien {
         }
     }
 
-    // ================================
     // PHÒNG ĐIỀU TRỊ
-    // ================================
     public void themPhong(PhongDieuTri p) {
         danhSachPhong.add(p);
     }
@@ -116,7 +110,6 @@ public class BenhVien {
         return false;
     }
 
-    public void xuatBaoCaoPhongRaFile() {
-        // TODO: Cài đặt nếu bạn muốn ghi ra file .txt
-    }
-}
+//    public void xuatBaoCaoPhongRaFile() {
+//    }
+//}
