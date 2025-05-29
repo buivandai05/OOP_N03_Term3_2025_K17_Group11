@@ -27,5 +27,13 @@ public class BenhVienTest {
         benhVien.themPhong(phongDieuTri);
     }
 
+    @Test
+    public void testThemBacSi() {
+        BacSi newBacSi = new BacSi("BS002", "Dr. Jane", new ArrayList<>());
+        benhVien.themBacSi(newBacSi);
+
+        assertEquals(newBacSi, benhVien.timBacSiTheoMa("BS002"));
+    }
+
 
 }
