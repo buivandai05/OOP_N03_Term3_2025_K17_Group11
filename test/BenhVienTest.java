@@ -53,5 +53,13 @@ public class BenhVienTest {
         assertTrue(phongDieuTri.getMaBacSi().equals("BS001"));
     }
 
+    @Test
+    public void testThemBenhNhan() {
+        BenhNhan newBenhNhan = new BenhNhan("BN002", "Bob", "Cold");
+        benhVien.themBenhNhan(newBenhNhan);
+
+        assertEquals(newBenhNhan, benhVien.timBenhNhanTheoMa("BN002"));
+    }
+
 
 }
