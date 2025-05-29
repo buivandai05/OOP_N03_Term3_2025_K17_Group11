@@ -12,5 +12,20 @@ public class BenhVienTest {
     private BenhNhan benhNhan;
     private PhongDieuTri phongDieuTri;
 
+    @BeforeEach
+    public void setUp() {
+        benhVien = new BenhVien();
+
+        // Mock objects for testing
+        bacSi = new BacSi("BS001", "Dr. John", new ArrayList<>());
+        benhNhan = new BenhNhan("BN001", "Alice", "Fever");
+        phongDieuTri = new PhongDieuTri("P001");
+
+        // Adding initial data
+        benhVien.themBacSi(bacSi);
+        benhVien.themBenhNhan(benhNhan);
+        benhVien.themPhong(phongDieuTri);
+    }
+
 
 }
