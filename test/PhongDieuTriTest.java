@@ -40,4 +40,9 @@ public class PhongDieuTriTest {
         assertTrue(phongDieuTri.xoaBenhNhan("BN001"));
         assertEquals(0, phongDieuTri.getDsBenhNhan().size());
     }
+
+    @Test
+    public void testXoaBenhNhan_KhongTonTai() {
+        assertFalse(phongDieuTri.xoaBenhNhan("BN999")); // Không tồn tại
+    }
 }
