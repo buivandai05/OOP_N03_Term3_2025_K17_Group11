@@ -45,4 +45,13 @@ public class PhongDieuTriTest {
     public void testXoaBenhNhan_KhongTonTai() {
         assertFalse(phongDieuTri.xoaBenhNhan("BN999")); // Không tồn tại
     }
+
+    @Test
+    public void testHienThiThongTin() {
+        BenhNhan bn1 = new BenhNhan("BN001", "Nguyen Van A", 30);
+        phongDieuTri.themBenhNhan(bn1);
+
+        // Just a sample test to ensure no exceptions occur during execution
+        phongDieuTri.hienThiThongTin();
+    }
 }
