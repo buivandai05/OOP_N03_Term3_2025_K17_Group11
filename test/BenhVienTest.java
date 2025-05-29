@@ -73,5 +73,12 @@ public class BenhVienTest {
         assertNull(benhVien.timBenhNhanTheoMa("BN001"));
     }
 
+    @Test
+    public void testGanBenhNhanVaoPhong() {
+        boolean result = benhVien.ganBenhNhanVaoPhong("BN001", "P001");
+        assertTrue(result);
+        assertEquals("P001", benhNhan.getMaPhong());
+    }
+
 
 }
