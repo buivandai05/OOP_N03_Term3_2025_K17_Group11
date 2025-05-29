@@ -1,35 +1,30 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class BacSiTest {
     public static void main(String[] args) {
-        // Tạo đối tượng BacSi với constructor đầy đủ
-        BacSi bacSi = new BacSi(
-                "BS001",
-                "Nguyễn Thị Hà",
-                "1980-01-01",
-                "Nữ",
-                "0909123456",
-                "Nội khoa",
-                new ArrayList<>() // Danh sách bệnh nhân phụ trách rỗng
-        );
+        // Tạo đối tượng Bác sĩ
+        BacSi bacSi = new BacSi("BS001", "Nguyễn Văn A", "Nội khoa", "0123456789");
 
-        // Kiểm tra các phương thức getter
-        System.out.println("Mã Bác Sĩ: " + bacSi.getMaNguoi());
-        System.out.println("Họ Tên: " + bacSi.getHoTen());
-        System.out.println("Chuyên Khoa: " + bacSi.getChuyenKhoa());
-        System.out.println("Số Điện Thoại: " + bacSi.getSoDienThoai());
+        System.out.println("=== THÔNG TIN BAN ĐẦU ===");
+        bacSi.hienThiThongTin();
+        
+        bacSi.themMaPhong("P101");
+        bacSi.themMaPhong("P102");
+        bacSi.themMaPhong("P101"); 
+        
+        System.out.println("\n=== SAU KHI THÊM PHÒNG ===");
+        bacSi.hienThiThongTin();
 
-        // Kiểm tra các phương thức setter
-        bacSi.setMaNguoi("BS002");
-        bacSi.setHoTen("Nguyễn Thị Diệp");
-        bacSi.setChuyenKhoa("Ngoại khoa");
-        bacSi.setSoDienThoai("0911122334");
+        bacSi.xoaMaPhong("P102");
+        bacSi.xoaMaPhong("P999"); 
 
-        // Kiểm tra thông tin đã cập nhật
-        System.out.println("\nThông Tin Đã Cập Nhật:");
-        System.out.println("Mã Bác Sĩ: " + bacSi.getMaNguoi());
-        System.out.println("Họ Tên: " + bacSi.getHoTen());
-        System.out.println("Chuyên Khoa: " + bacSi.getChuyenKhoa());
-        System.out.println("Số Điện Thoại: " + bacSi.getSoDienThoai());
+        System.out.println("\n SAU KHI XÓA PHÒNG ");
+        bacSi.hienThiThongTin();
+
+        bacSi.setSoDienThoai("0987654321");
+        bacSi.setChuyenKhoa("Tim mạch");
+
+        System.out.println("\n=== SAU KHI ĐỔI THÔNG TIN ===");
+        bacSi.hienThiThongTin();
     }
 }
