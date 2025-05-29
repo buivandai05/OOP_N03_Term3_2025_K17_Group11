@@ -67,5 +67,11 @@ public class BenhVienTest {
         assertNull(benhVien.timBenhNhanTheoMa("BN999"));
     }
 
+    @Test
+    public void testXoaBenhNhan() {
+        benhVien.xoaBenhNhan("BN001");
+        assertNull(benhVien.timBenhNhanTheoMa("BN001"));
+    }
+
 
 }
