@@ -51,7 +51,6 @@ public class PhongDieuTriTest {
         BenhNhan bn1 = new BenhNhan("BN001", "Nguyen Van A", 30);
         phongDieuTri.themBenhNhan(bn1);
 
-        // Just a sample test to ensure no exceptions occur during execution
         phongDieuTri.hienThiThongTin();
     }
 }
