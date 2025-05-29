@@ -31,4 +31,13 @@ public class PhongDieuTriTest {
         assertFalse(phongDieuTri.themBenhNhan(bn3)); // Vượt sức chứa
         assertEquals(2, phongDieuTri.getDsBenhNhan().size());
     }
+
+    @Test
+    public void testXoaBenhNhan_ThanhCong() {
+        BenhNhan bn1 = new BenhNhan("BN001", "Nguyen Van A", 30);
+        phongDieuTri.themBenhNhan(bn1);
+
+        assertTrue(phongDieuTri.xoaBenhNhan("BN001"));
+        assertEquals(0, phongDieuTri.getDsBenhNhan().size());
+    }
 }
