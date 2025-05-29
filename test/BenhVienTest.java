@@ -61,5 +61,11 @@ public class BenhVienTest {
         assertEquals(newBenhNhan, benhVien.timBenhNhanTheoMa("BN002"));
     }
 
+    @Test
+    public void testTimBenhNhanTheoMa() {
+        assertEquals(benhNhan, benhVien.timBenhNhanTheoMa("BN001"));
+        assertNull(benhVien.timBenhNhanTheoMa("BN999"));
+    }
+
 
 }
