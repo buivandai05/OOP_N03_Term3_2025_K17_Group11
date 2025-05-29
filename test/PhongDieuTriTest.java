@@ -19,4 +19,16 @@ public class PhongDieuTriTest {
         assertTrue(phongDieuTri.themBenhNhan(bn1));
         assertEquals(1, phongDieuTri.getDsBenhNhan().size());
     }
+
+    @Test
+    public void testThemBenhNhan_VuotSucChua() {
+        BenhNhan bn1 = new BenhNhan("BN001", "Nguyen Van A", 30);
+        BenhNhan bn2 = new BenhNhan("BN002", "Tran Thi B", 25);
+        BenhNhan bn3 = new BenhNhan("BN003", "Le Van C", 40);
+
+        assertTrue(phongDieuTri.themBenhNhan(bn1));
+        assertTrue(phongDieuTri.themBenhNhan(bn2));
+        assertFalse(phongDieuTri.themBenhNhan(bn3)); // Vượt sức chứa
+        assertEquals(2, phongDieuTri.getDsBenhNhan().size());
+    }
 }
