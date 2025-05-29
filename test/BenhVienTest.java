@@ -47,5 +47,11 @@ public class BenhVienTest {
         assertNull(benhVien.timBacSiTheoMa("BS001"));
     }
 
+    @Test
+    public void testGanPhongChoBacSi() {
+        benhVien.ganPhongChoBacSi("BS001", "P001");
+        assertTrue(phongDieuTri.getMaBacSi().equals("BS001"));
+    }
+
 
 }
