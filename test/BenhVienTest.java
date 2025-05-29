@@ -41,5 +41,11 @@ public class BenhVienTest {
         assertNull(benhVien.timBacSiTheoMa("BS999"));
     }
 
+    @Test
+    public void testXoaBacSi() {
+        benhVien.xoaBacSi("BS001");
+        assertNull(benhVien.timBacSiTheoMa("BS001"));
+    }
+
 
 }
