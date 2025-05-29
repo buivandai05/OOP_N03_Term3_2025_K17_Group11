@@ -80,5 +80,13 @@ public class BenhVienTest {
         assertEquals("P001", benhNhan.getMaPhong());
     }
 
+    @Test
+    public void testThemPhong() {
+        PhongDieuTri newPhong = new PhongDieuTri("P002");
+        benhVien.themPhong(newPhong);
+
+        assertEquals(newPhong, benhVien.timPhongTheoMa("P002"));
+    }
+
 
 }
