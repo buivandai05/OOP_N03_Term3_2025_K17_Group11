@@ -127,17 +127,31 @@ public class BenhVien {
         }
     }
 
+   //ganBenhNhanVaoPhong
     public boolean ganBenhNhanVaoPhong(String maBenhNhan, String maPhong) {
         BenhNhan bn = timBenhNhanTheoMa(maBenhNhan);
         PhongDieuTri p = timPhongTheoMa(maPhong);
         if (bn != null && p != null) {
-            boolean ok = p.themBenhNhan(bn);
-            if (ok) {
+            boolean KQ = p.themBenhNhanVaoPhong(bn);
+            if (KQ) {
                 bn.setMaPhong(maPhong);
                 return true;
             }
         }
         return false;
+    }
+    public void ganBenhNhanVaoPhongTuBP() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập mã bệnh nhân cần gán vào phòng: ");
+        String maBenhNhan = scanner.nextLine();
+        System.out.print("Nhập mã phòng điều trị: ");
+        String maPhong = scanner.nextLine();
+        boolean ketQua = ganBenhNhanVaoPhong(maBenhNhan, maPhong);
+        if (ketQua) {
+            System.out.println("Gán bệnh nhân " + maBenhNhan + " vào phòng " + maPhong + " thành công.");
+        } else {
+            System.out.println("Gán thất bại.");
+        }
     }
 
 //    public void xuatBaoCaoPhongRaFile() {
