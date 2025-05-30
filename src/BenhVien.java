@@ -51,7 +51,7 @@ public class BenhVien {
     }
 
     // Tìm và trả về bệnh nhân theo mã
-    public BenhNhan timBenhNhan(String ma) {
+    public BenhNhan timBenhNhanTheoMa(String ma) {
         for (BenhNhan bn : danhSachBenhNhan) {
             if (bn.getMaBenhNhan().equals(ma)) return bn;
         }
@@ -59,13 +59,13 @@ public class BenhVien {
     }
 
     // Hiển thị thông tin bệnh nhân theo mã nhập từ bàn phím
-    public void hienThiBenhNhan() {
+    public void hienThiBenhNhanTheoMa() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Nhập mã bệnh nhân cần tìm: ");
         String ma = scanner.nextLine();
 
-        BenhNhan bn = timBenhNhan(ma);
+        BenhNhan bn = timBenhNhanTheoMa(ma);
         if (bn != null) {
             System.out.println("Thông tin bệnh nhân:");
             bn.hienThiThongTin();
@@ -92,12 +92,25 @@ public class BenhVien {
     public void themPhong(PhongDieuTri p) {
         danhSachPhong.add(p);
     }
-
+    //Tìm và hiển thị phòng theo mã
     public PhongDieuTri timPhongTheoMa(String ma) {
         for (PhongDieuTri p : danhSachPhong) {
             if (p.getMaPhong().equals(ma)) return p;
         }
         return null;
+    }
+    public void hienThiPhongTheoMa() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Nhập mã phòng cần tìm: ");
+        String maPhong = scanner.nextLine();
+
+        PhongDieuTri phong = timPhongTheoMa(maPhong);
+        if (phong != null) {
+            System.out.println("Thông tin phòng điều trị:");
+            phong.hienThiThongTin();
+        } else {
+            System.out.println("Không tìm thấy phòng điều trị có mã: " + maPhong);
+        }
     }
 
     public void xoaPhong(String ma) {
