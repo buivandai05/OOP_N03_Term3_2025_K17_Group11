@@ -50,11 +50,28 @@ public class BenhVien {
         danhSachBenhNhan.add(bn);
     }
 
-    public BenhNhan timBenhNhanTheoMa(String ma) {
+    // Tìm và trả về bệnh nhân theo mã
+    public BenhNhan timBenhNhan(String ma) {
         for (BenhNhan bn : danhSachBenhNhan) {
             if (bn.getMaBenhNhan().equals(ma)) return bn;
         }
         return null;
+    }
+
+    // Hiển thị thông tin bệnh nhân theo mã nhập từ bàn phím
+    public void hienThiBenhNhan() {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Nhập mã bệnh nhân cần tìm: ");
+        String ma = scanner.nextLine();
+
+        BenhNhan bn = timBenhNhan(ma);
+        if (bn != null) {
+            System.out.println("Thông tin bệnh nhân:");
+            bn.hienThiThongTin();
+        } else {
+            System.out.println("Không tìm thấy bệnh nhân có mã: " + ma);
+        }
     }
 
     public void xoaBenhNhan(String ma) {
