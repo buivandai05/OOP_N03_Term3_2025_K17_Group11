@@ -66,28 +66,28 @@ public class QuanLyBenhNhan {
 
     // 2. Hiển thị bệnh nhân đủ điều kiện xuất viện trong ngày
     // 1. Hiển thị bệnh nhân tại khoa Cấp cứu theo ngày nhập từ bàn phím
-public void hienThiBenhNhanCapCuuTheoNgay() {
-    try {
-        System.out.print("Nhập ngày cần tìm bệnh nhân tại Khoa Cấp cứu (định dạng yyyy-MM-dd): ");
-        String ngayNhap = scanner.nextLine();
-        LocalDate ngayCanTim = LocalDate.parse(ngayNhap);
-
-        System.out.println("Danh sách bệnh nhân tại Khoa Cấp cứu trong ngày " + ngayCanTim + ":");
-        boolean coBenhNhan = false;
-        for (BenhNhan bn : danhSachBenhNhan) {
-            if (bn.getKhoa().equalsIgnoreCase("Cấp cứu") && bn.getNgayNhapVien().equals(ngayCanTim)) {
-                bn.hienThiThongTin();
-                coBenhNhan = true;
+    public void hienThiBenhNhanCapCuuTheoNgay() {
+        try {
+            System.out.print("Nhập ngày cần tìm bệnh nhân tại Khoa Cấp cứu (định dạng yyyy-MM-dd): ");
+            String ngayNhap = scanner.nextLine();
+            LocalDate ngayCanTim = LocalDate.parse(ngayNhap);
+    
+            System.out.println("Danh sách bệnh nhân tại Khoa Cấp cứu trong ngày " + ngayCanTim + ":");
+            boolean coBenhNhan = false;
+            for (BenhNhan bn : danhSachBenhNhan) {
+                if (bn.getKhoa().equalsIgnoreCase("Cấp cứu") && bn.getNgayNhapVien().equals(ngayCanTim)) {
+                    bn.hienThiThongTin();
+                    coBenhNhan = true;
+                }
             }
+    
+            if (!coBenhNhan) {
+                System.out.println("Không có bệnh nhân nào tại Khoa Cấp cứu trong ngày " + ngayCanTim + ".");
+            }
+        } catch (Exception e) {
+            System.out.println("Lỗi định dạng ngày. Vui lòng nhập đúng định dạng yyyy-MM-dd.");
         }
-
-        if (!coBenhNhan) {
-            System.out.println("Không có bệnh nhân nào tại Khoa Cấp cứu trong ngày " + ngayCanTim + ".");
-        }
-    } catch (Exception e) {
-        System.out.println("Lỗi định dạng ngày. Vui lòng nhập đúng định dạng yyyy-MM-dd.");
     }
-}
 
 
     // 3. Cập nhật bệnh nhân chuyển từ Khoa Cấp cứu đến Hồi sức trong ngày
