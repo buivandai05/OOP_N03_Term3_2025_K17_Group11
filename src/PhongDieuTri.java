@@ -1,3 +1,5 @@
+package entity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,17 @@ public class PhongDieuTri {
         this.sucChua = sucChua;
         this.maBacSi = maBacSi;
         this.dsBenhNhan = new ArrayList<>();
+    }
+
+    public PhongDieuTri(String p01, String phòngNội) {
+    }
+
+    public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua) {
+        this.maPhong=maPhong;
+        this.tenPhong=tenPhong;
+        this.khoa=khoa;
+        this.sucChua=sucChua;
+        this.dsBenhNhan=new ArrayList<>();
     }
 
     // Getters và Setters
@@ -37,7 +50,7 @@ public class PhongDieuTri {
     public List<BenhNhan> getDsBenhNhan() { return dsBenhNhan; }
 
     // Thêm bệnh nhân vào phòng
-    public boolean themBenhNhan(BenhNhan bn) {
+    public boolean themBenhNhanVaoPhong(BenhNhan bn) {
         if (dsBenhNhan.size() < sucChua) {
             dsBenhNhan.add(bn);
             return true;
@@ -58,4 +71,10 @@ public class PhongDieuTri {
             bn.hienThiThongTin();
         }
     }
+
+    // Xóa bệnh nhân khỏi phòng theo đối tượng
+    public boolean xoaBenhNhanKhoiPhong(BenhNhan bn) {
+        return dsBenhNhan.remove(bn);
+    }
+
 }
