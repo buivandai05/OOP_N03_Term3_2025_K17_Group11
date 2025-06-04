@@ -1,3 +1,5 @@
+package entity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -6,7 +8,7 @@ public class BacSi {
     private String tenBacSi;
     private String chuyenKhoa;
     private String soDienThoai;
-    private List<String> dsMaPhong;
+    private List<String> dsMaPhong; // Lưu danh sách mã phòng
 
     public BacSi(String maBacSi, String tenBacSi, String chuyenKhoa, String soDienThoai) {
         this.maBacSi = maBacSi;
@@ -31,11 +33,13 @@ public class BacSi {
 
     public List<String> getDsMaPhong() { return dsMaPhong; }
 
-    // Thêm mã phòng phụ trách
-    public void themMaPhong(String maPhong) {
+    // Thêm mã phòng phụ trách (nếu chưa có)
+    public boolean themMaPhong(String maPhong) {
         if (!dsMaPhong.contains(maPhong)) {
             dsMaPhong.add(maPhong);
+            return true;
         }
+        return false;
     }
 
     // Xóa mã phòng phụ trách
@@ -47,6 +51,6 @@ public class BacSi {
     public void hienThiThongTin() {
         System.out.println("Mã BS: " + maBacSi + ", Tên: " + tenBacSi +
                 ", Chuyên khoa: " + chuyenKhoa + ", SĐT: " + soDienThoai);
-        System.out.println("Danh sách phòng phụ trách: " + dsMaPhong);
+        System.out.println("Danh sách mã phòng phụ trách: " + dsMaPhong);
     }
 }
