@@ -1,5 +1,8 @@
 package entity;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -8,7 +11,6 @@ public class BenhVien {
     private List<BacSi> danhSachBacSi;
     private List<BenhNhan> danhSachBenhNhan;
     private List<PhongDieuTri> danhSachPhong;
-    private final Scanner scanner = new Scanner(System.in);
 
     public BenhVien() {
         this.danhSachBacSi = new ArrayList<>();
@@ -64,6 +66,7 @@ public class BenhVien {
 
 
     //====================BÁC SĨ====================
+
     public boolean themBacSi(BacSi bs) {
         if (timBacSiTheoMa(bs.getMaBacSi()) != null){
             System.out.println("Mã bác sĩ đã tồn tại!");
@@ -146,7 +149,18 @@ public class BenhVien {
         }
     }
 
-    // Hiển thị ds phòng mà bác sĩ phụ trách
+    //lấy BS phu trach
+    public BacSi layBacSiPhuTrach(PhongDieuTri phong) {
+        for (BacSi bs : danhSachBacSi) {
+            if (bs.getDsMaPhong().contains(phong.getMaPhong())) {
+                return bs;
+            }
+        }
+        return null;
+    }
+
+
+    // Hiển thị ds phòng bác sĩ phụ trách
     public void hienThiPhongBacSiPhuTrach() {
         System.out.print("Nhập mã bác sĩ phụ trách: ");
         Scanner scanner = new Scanner(System.in);
@@ -171,6 +185,7 @@ public class BenhVien {
     }
 
     //====================PHÒNG ĐIỀU TRỊ====================
+
     public boolean themPhong(PhongDieuTri p) {
         if (timPhongTheoMa(p.getMaPhong()) != null){
             System.out.println("Mã phòng đã tồn tại!");
@@ -302,9 +317,90 @@ public class BenhVien {
         }
     }
 
-
-    //public void xuatBaoCaoPhongRaFile() {
-       //  TODO: Cài đặt nếu bạn muốn ghi ra file .txt
-    //}
+    //Lấy phòng
+    public PhongDieuTri layPhongCuaBenhNhan(BenhNhan bn) {
+        for (PhongDieuTri p : danhSachPhong) {
+            if (p.getDsBenhNhan().contains(bn)) {
+                return p;
+            }
+        }
+        return null;
     }
+
+    //============================
+    public void hienThiHoSoBenhNhan() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập mã bệnh nhân: ");
+        String maBN = sc.nextLine();
+
+        BenhNhan bn = timBenhNhanTheoMa(maBN);
+        if (bn == null) {
+            System.out.println("Không tìm thấy bệnh nhân.");
+            return;
+        }
+
+        PhongDieuTri phong = layPhongCuaBenhNhan(bn);
+        BacSi bs = (phong != null) ? layBacSiPhuTrach(phong) : null;
+
+        System.out.println("\n--- Hồ sơ bệnh nhân ---");
+        System.out.println("Mã BN: " + bn.getMaBenhNhan());
+        System.out.println("Tên: " + bn.getTenBenhNhan());
+        System.out.println("Tuổi: " + bn.getTuoi());
+
+        if (phong != null) {
+            System.out.println("Phòng điều trị: " + phong.getTenPhong() + " (" + phong.getMaPhong() + ")");
+        } else {
+            System.out.println("Phòng điều trị: Chưa phân phòng");
+        }
+
+        if (bs != null) {
+            System.out.println("Bác sĩ phụ trách: " + bs.getTenBacSi() + " (" + bs.getMaBacSi() + ")");
+        } else {
+            System.out.println("Bác sĩ phụ trách: Không xác định");
+        }
+    }
+
+
+    public void luuHoSoBenhNhanVaoFile(String maBN, String hoso_benhnhan) {
+        BenhNhan bn = timBenhNhanTheoMa(maBN);
+        if (bn == null) {
+            System.out.println("Không tìm thấy bệnh nhân.");
+            return;
+        }
+        PhongDieuTri phong = layPhongCuaBenhNhan(bn);
+        BacSi bs = (phong != null) ? layBacSiPhuTrach(phong) : null;
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(hoso_benhnhan))) {
+            writer.write("--- Hồ sơ bệnh nhân ---\n");
+            writer.write("Mã BN: " + bn.getMaBenhNhan() + "\n");
+            writer.write("Tên: " + bn.getTenBenhNhan() + "\n");
+            writer.write("Tuổi: " + bn.getTuoi() + "\n");
+            writer.write("Giới tính: " + bn.getGioiTinh() + "\n");
+            writer.write("Chuẩn đoán: " + bn.getChuanDoan() + "\n");
+
+            if (phong != null) {
+                writer.write("Phòng điều trị: " + phong.getTenPhong() + " (" + phong.getMaPhong() + ")\n");
+            } else {
+                writer.write("Phòng điều trị: Chưa phân phòng\n");
+            }
+
+            if (bs != null) {
+                writer.write("Bác sĩ phụ trách: " + bs.getTenBacSi() + " (" + bs.getMaBacSi() + ")\n");
+            } else {
+                writer.write("Bác sĩ phụ trách: Chưa phân công\n");
+            }
+
+            System.out.println("Đã ghi hồ sơ bệnh nhân vào file: " + hoso_benhnhan);
+        } catch (IOException e) {
+            System.out.println("Lỗi khi ghi file: " + e.getMessage());
+        }
+    }
+    public void xuatHoSoBenhNhanTuBP() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Nhập mã bệnh nhân: ");
+        String maBN = sc.nextLine();
+        luuHoSoBenhNhanVaoFile(maBN, "hoso_benhnhan.txt");
+    }
+
+}
 
