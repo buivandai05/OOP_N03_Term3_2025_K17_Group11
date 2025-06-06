@@ -17,7 +17,7 @@
 
 🩺 Chức Năng Chính
 - Quản lý bệnh nhân: thêm, sửa, xóa thông tin bệnh nhân.
-- Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng, thêm hoặc xóa bênh nhân khỏi phòng.
+- Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng, thêm hoặc xóa bệnh nhân khỏi phòng.
 - Quản lý bác sĩ: thêm, sửa, xóa thông tin bác sĩ, thêm hoặc xóa phòng phụ trách cho bác sĩ.
 - Lưu và hiển thị thông tin hồ sơ bệnh nhân.
 
