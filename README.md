@@ -37,5 +37,8 @@
 
 ![image](https://github.com/user-attachments/assets/4078119a-8485-4ae0-920a-d27018bca417)
 
+# 2. Lưu đồ thuật toán
+
+![algo_diagram](https://github.com/user-attachments/assets/06eb667e-f7f4-43f1-a112-b84e657d9a49)
 
 
