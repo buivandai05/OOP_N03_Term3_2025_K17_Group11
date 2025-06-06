@@ -19,7 +19,7 @@
 - Quản lý bệnh nhân: thêm, sửa, xóa thông tin bệnh nhân.
 - Quản lý phòng điều trị: thêm, sửa, xóa thông tin phòng, thêm hoặc xóa bênh nhân khỏi phòng.
 - Quản lý bác sĩ: thêm, sửa, xóa thông tin bác sĩ, thêm hoặc xóa phòng phụ trách cho bác sĩ.
-- Lưu thông tin bệnh nhân ra file.
+- Lưu và hiển thị thông tin hồ sơ bệnh nhân.
 
 ---
 
