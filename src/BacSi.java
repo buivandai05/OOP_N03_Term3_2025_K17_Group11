@@ -8,7 +8,7 @@ public class BacSi {
     private String tenBacSi;
     private String chuyenKhoa;
     private String soDienThoai;
-    private List<String> dsMaPhong; // Lưu danh sách mã phòng
+    private List<String> dsMaPhong;
 
     public BacSi(String maBacSi, String tenBacSi, String chuyenKhoa, String soDienThoai) {
         this.maBacSi = maBacSi;
