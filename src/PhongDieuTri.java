@@ -72,7 +72,7 @@ public class PhongDieuTri {
         }
     }
 
-    // Xóa bệnh nhân khỏi phòng theo đối tượng
+    // Xóa bệnh nhân khỏi phòng
     public boolean xoaBenhNhanKhoiPhong(BenhNhan bn) {
         return dsBenhNhan.remove(bn);
     }
