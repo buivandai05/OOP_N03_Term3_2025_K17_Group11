@@ -23,84 +23,141 @@ public class BenhVien {
     // === QUẢN LÝ BỆNH NHÂN ===
     // ========================
     public boolean themBenhNhan(BenhNhan bn) {
-        if (timBenhNhanTheoMa(bn.getMaBenhNhan()) != null) {
+        try {
+            if (timBenhNhanTheoMa(bn.getMaBenhNhan()) != null) {
+                return false;
+            }
+            danhSachBenhNhan.add(bn);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
-        danhSachBenhNhan.add(bn);
-        return true;
     }
 
     public BenhNhan timBenhNhanTheoMa(String ma) {
-        for (BenhNhan bn : danhSachBenhNhan) {
-            if (bn.getMaBenhNhan().equals(ma)) {
-                return bn;
+        try {
+            for (BenhNhan bn : danhSachBenhNhan) {
+                if (bn.getMaBenhNhan().equals(ma)) {
+                    return bn;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     public List<BenhNhan> layTatCaBenhNhan() {
-        return danhSachBenhNhan;
+        try {
+            return danhSachBenhNhan;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public boolean xoaBenhNhan(String ma) {
-        return danhSachBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(ma));
+        try {
+            return danhSachBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(ma));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // ========================
     // === QUẢN LÝ BÁC SĨ ======
     // ========================
     public boolean themBacSi(BacSi bs) {
-        if (timBacSiTheoMa(bs.getMaBacSi()) != null) {
+        try {
+            if (timBacSiTheoMa(bs.getMaBacSi()) != null) {
+                return false;
+            }
+            danhSachBacSi.add(bs);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
-        danhSachBacSi.add(bs);
-        return true;
     }
 
     public BacSi timBacSiTheoMa(String ma) {
-        for (BacSi bs : danhSachBacSi) {
-            if (bs.getMaBacSi().equals(ma)) {
-                return bs;
+        try {
+            for (BacSi bs : danhSachBacSi) {
+                if (bs.getMaBacSi().equals(ma)) {
+                    return bs;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     public List<BacSi> layTatCaBacSi() {
-        return danhSachBacSi;
+        try {
+            return danhSachBacSi;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public boolean xoaBacSi(String ma) {
-        return danhSachBacSi.removeIf(bs -> bs.getMaBacSi().equals(ma));
+        try {
+            return danhSachBacSi.removeIf(bs -> bs.getMaBacSi().equals(ma));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // ========================
     // === QUẢN LÝ PHÒNG =======
     // ========================
     public boolean themPhong(PhongDieuTri p) {
-        if (timPhongTheoMa(p.getMaPhong()) != null) {
+        try {
+            if (timPhongTheoMa(p.getMaPhong()) != null) {
+                return false;
+            }
+            danhSachPhong.add(p);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
-        danhSachPhong.add(p);
-        return true;
     }
 
     public PhongDieuTri timPhongTheoMa(String ma) {
-        for (PhongDieuTri p : danhSachPhong) {
-            if (p.getMaPhong().equals(ma)) {
-                return p;
+        try {
+            for (PhongDieuTri p : danhSachPhong) {
+                if (p.getMaPhong().equals(ma)) {
+                    return p;
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     public List<PhongDieuTri> layTatCaPhong() {
-        return danhSachPhong;
+        try {
+            return danhSachPhong;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
     public boolean xoaPhong(String ma) {
-        return danhSachPhong.removeIf(p -> p.getMaPhong().equals(ma));
+        try {
+            return danhSachPhong.removeIf(p -> p.getMaPhong().equals(ma));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     // ========================
@@ -108,20 +165,28 @@ public class BenhVien {
     // ========================
 
     public boolean themBenhNhanVaoPhong(String maPhong, BenhNhan bn) {
-        PhongDieuTri p = timPhongTheoMa(maPhong);
-        if (p != null) {
-            return p.themBenhNhanVaoPhong(bn);
+        try {
+            PhongDieuTri p = timPhongTheoMa(maPhong);
+            if (p != null) {
+                return p.themBenhNhanVaoPhong(bn);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }
 
     public boolean ganPhongChoBacSi(String maBacSi, String maPhong) {
-        BacSi bs = timBacSiTheoMa(maBacSi);
-        PhongDieuTri p = timPhongTheoMa(maPhong);
-        if (bs != null && p != null) {
-            bs.themMaPhong(maPhong);
-            p.setMaBacSi(maBacSi);
-            return true;
+        try {
+            BacSi bs = timBacSiTheoMa(maBacSi);
+            PhongDieuTri p = timPhongTheoMa(maPhong);
+            if (bs != null && p != null) {
+                bs.themMaPhong(maPhong);
+                p.setMaBacSi(maBacSi);
+                return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return false;
     }

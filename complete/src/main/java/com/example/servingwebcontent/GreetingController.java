@@ -10,8 +10,13 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-		model.addAttribute("name", name);
-		return "greeting";
+		try {
+			model.addAttribute("name", name);
+			return "greeting";
+		} catch (Exception e) {
+			model.addAttribute("error", "Đã xảy ra lỗi: " + e.getMessage());
+			return "error";
+		}
 	}
 
 }

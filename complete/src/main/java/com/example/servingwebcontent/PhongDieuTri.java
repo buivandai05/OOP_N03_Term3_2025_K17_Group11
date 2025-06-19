@@ -48,21 +48,36 @@ public class PhongDieuTri {
 
     // Thêm bệnh nhân
     public boolean themBenhNhanVaoPhong(BenhNhan bn) {
-        if (dsBenhNhan.size() < sucChua) {
-            dsBenhNhan.add(bn);
-            return true;
+        try {
+            if (dsBenhNhan.size() < sucChua) {
+                dsBenhNhan.add(bn);
+                return true;
+            }
+            return false;
+        } catch (Exception e) {
+            System.err.println("Lỗi khi thêm bệnh nhân vào phòng: " + e.getMessage());
+            return false;
         }
-        return false;
     }
 
     // Xoá bệnh nhân theo mã
     public boolean xoaBenhNhan(String maBenhNhan) {
-        return dsBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(maBenhNhan));
+        try {
+            return dsBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(maBenhNhan));
+        } catch (Exception e) {
+            System.err.println("Lỗi khi xoá bệnh nhân theo mã: " + e.getMessage());
+            return false;
+        }
     }
 
     // Xoá bệnh nhân theo đối tượng
     public boolean xoaBenhNhanKhoiPhong(BenhNhan bn) {
-        return dsBenhNhan.remove(bn);
+        try {
+            return dsBenhNhan.remove(bn);
+        } catch (Exception e) {
+            System.err.println("Lỗi khi xoá bệnh nhân khỏi phòng: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override

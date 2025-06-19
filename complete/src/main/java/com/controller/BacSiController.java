@@ -14,27 +14,39 @@ public class BacSiController {
 
     @GetMapping
     public List<BacSi> getAll() {
-        return danhSachBacSi;
+        try {
+            return danhSachBacSi;
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @PostMapping
     public String themBacSi(@RequestBody BacSi bs) {
-        for (BacSi b : danhSachBacSi) {
-            if (b.getMaBacSi().equals(bs.getMaBacSi())) {
-                return "❌ Mã bác sĩ đã tồn tại!";
+        try {
+            for (BacSi b : danhSachBacSi) {
+                if (b.getMaBacSi().equals(bs.getMaBacSi())) {
+                    return "❌ Mã bác sĩ đã tồn tại!";
+                }
             }
+            danhSachBacSi.add(bs);
+            return "✅ Thêm bác sĩ thành công!";
+        } catch (Exception e) {
+            return "❌ Lỗi: " + e.getMessage();
         }
-        danhSachBacSi.add(bs);
-        return "✅ Thêm bác sĩ thành công!";
     }
 
     @GetMapping("/{maBacSi}")
     public BacSi getByMa(@PathVariable String maBacSi) {
-        for (BacSi b : danhSachBacSi) {
-            if (b.getMaBacSi().equals(maBacSi)) {
-                return b;
+        try {
+            for (BacSi b : danhSachBacSi) {
+                if (b.getMaBacSi().equals(maBacSi)) {
+                    return b;
+                }
             }
+            return null;
+        } catch (Exception e) {
+            return null;
         }
-        return null; // Hoặc ResponseEntity.notFound().build()
     }
 }
