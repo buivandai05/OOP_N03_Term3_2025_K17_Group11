@@ -33,7 +33,6 @@ public class BacSi {
 
     public List<String> getDsMaPhong() { return dsMaPhong; }
 
-    // Thêm mã phòng phụ trách (nếu chưa có)
     public boolean themMaPhong(String maPhong) {
         if (!dsMaPhong.contains(maPhong)) {
             dsMaPhong.add(maPhong);
@@ -42,15 +41,18 @@ public class BacSi {
         return false;
     }
 
-    // Xóa mã phòng phụ trách
     public void xoaMaPhong(String maPhong) {
         dsMaPhong.remove(maPhong);
     }
 
-    // Hiển thị thông tin bác sĩ
-    public void hienThiThongTin() {
-        System.out.println("Mã BS: " + maBacSi + ", Tên: " + tenBacSi +
-                ", Chuyên khoa: " + chuyenKhoa + ", SĐT: " + soDienThoai);
-        System.out.println("Danh sách mã phòng phụ trách: " + dsMaPhong);
+    public String getThongTin() {
+        return "Mã BS: " + maBacSi + ", Tên: " + tenBacSi +
+                ", Chuyên khoa: " + chuyenKhoa + ", SĐT: " + soDienThoai +
+                ", Danh sách mã phòng: " + dsMaPhong;
+    }
+
+    @Override
+    public String toString() {
+        return getThongTin();
     }
 }

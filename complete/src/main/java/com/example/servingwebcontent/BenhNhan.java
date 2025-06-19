@@ -23,14 +23,7 @@ public class BenhNhan {
         this.chuanDoan = chuanDoan;
     }
 
-    public BenhNhan(String maBenhNhan, String tenBenhNhan, int tuoi) {
-        this.maBenhNhan = maBenhNhan;
-        this.tenBenhNhan = tenBenhNhan;
-        this.tuoi = tuoi;
-    }
-
-
-    // Getters and Setters
+    // Getters & Setters
     public String getMaBenhNhan() { return maBenhNhan; }
     public void setMaBenhNhan(String maBenhNhan) { this.maBenhNhan = maBenhNhan; }
 
@@ -55,10 +48,18 @@ public class BenhNhan {
     public String getChuanDoan() { return chuanDoan; }
     public void setChuanDoan(String chuanDoan) { this.chuanDoan = chuanDoan; }
 
-    // Hiển thị thông tin bệnh nhân
-    public void hienThiThongTin() {
-        System.out.println("Mã BN: " + maBenhNhan + ", Tên: " + tenBenhNhan + ", Tuổi: " + tuoi +
-                ", Giới tính: " + gioiTinh + ", Địa chỉ: " + diaChi +
-                ", SĐT: " + soDienThoai + ", Phòng: " + maPhong + ", Chuẩn đoán: " + chuanDoan);
+    // Có thể thêm toString() nếu cần debug
+    @Override
+    public String toString() {
+        return "BenhNhan{" +
+                "maBenhNhan='" + maBenhNhan + '\'' +
+                ", tenBenhNhan='" + tenBenhNhan + '\'' +
+                ", tuoi=" + tuoi +
+                ", gioiTinh='" + gioiTinh + '\'' +
+                ", diaChi='" + diaChi + '\'' +
+                ", soDienThoai='" + soDienThoai + '\'' +
+                ", maPhong='" + maPhong + '\'' +
+                ", chuanDoan='" + chuanDoan + '\'' +
+                '}';
     }
 }

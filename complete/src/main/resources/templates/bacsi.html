@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Quản Lý Bác Sĩ</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div class="container py-5">
+    <h2 class="mb-4">👨‍⚕️ Quản Lý Bác Sĩ</h2>
+
+    <!-- Form Thêm Bác Sĩ -->
+    <form id="formAddDoctor" class="mb-4">
+        <div class="row g-2">
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Mã Bác Sĩ" id="maBacSi" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Tên Bác Sĩ" id="tenBacSi" required>
+            </div>
+            <div class="col-md-3">
+                <input type="text" class="form-control" placeholder="Chuyên Khoa" id="chuyenKhoa" required>
+            </div>
+            <div class="col-md-2">
+                <input type="text" class="form-control" placeholder="SĐT" id="soDienThoai" required>
+            </div>
+            <div class="col-md-1">
+                <button type="submit" class="btn btn-primary w-100">Thêm</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Danh Sách Bác Sĩ -->
+    <h4>Danh Sách Bác Sĩ</h4>
+    <table class="table table-bordered table-striped" id="tblDoctors">
+        <thead class="table-dark">
+        <tr>
+            <th>Mã</th>
+            <th>Tên</th>
+            <th>Chuyên Khoa</th>
+            <th>SĐT</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    const form = document.getElementById('formAddDoctor');
+    const tbl = document.getElementById('tblDoctors').getElementsByTagName('tbody')[0];
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        maBacSi: document.getElementById('maBacSi').value,
+        tenBacSi: document.getElementById('tenBacSi').value,
+        chuyenKhoa: document.getElementById('chuyenKhoa').value,
+        soDienThoai: document.getElementById('soDienThoai').value
+      };
+
+      await fetch('/api/benhvien/bacsi', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+
+      loadDoctors();
+      form.reset();
+    });
+
+    async function loadDoctors() {
+      const res = await fetch('/api/benhvien/bacsi');
+      const doctors = await res.json();
+      tbl.innerHTML = '';
+      doctors.forEach(d => {
+        const row = `<tr>
+          <td>${d.maBacSi}</td>
+          <td>${d.tenBacSi}</td>
+          <td>${d.chuyenKhoa}</td>
+          <td>${d.soDienThoai}</td>
+        </tr>`;
+        tbl.innerHTML += row;
+      });
+    }
+
+    loadDoctors();
+</script>
+</body>
+</html>

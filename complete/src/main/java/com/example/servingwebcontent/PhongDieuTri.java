@@ -20,15 +20,12 @@ public class PhongDieuTri {
         this.dsBenhNhan = new ArrayList<>();
     }
 
-    public PhongDieuTri(String p01, String phòngNội) {
-    }
-
     public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua) {
-        this.maPhong=maPhong;
-        this.tenPhong=tenPhong;
-        this.khoa=khoa;
-        this.sucChua=sucChua;
-        this.dsBenhNhan=new ArrayList<>();
+        this.maPhong = maPhong;
+        this.tenPhong = tenPhong;
+        this.khoa = khoa;
+        this.sucChua = sucChua;
+        this.dsBenhNhan = new ArrayList<>();
     }
 
     // Getters và Setters
@@ -49,7 +46,7 @@ public class PhongDieuTri {
 
     public List<BenhNhan> getDsBenhNhan() { return dsBenhNhan; }
 
-    // Thêm bệnh nhân vào phòng
+    // Thêm bệnh nhân
     public boolean themBenhNhanVaoPhong(BenhNhan bn) {
         if (dsBenhNhan.size() < sucChua) {
             dsBenhNhan.add(bn);
@@ -58,23 +55,25 @@ public class PhongDieuTri {
         return false;
     }
 
-    // Xóa bệnh nhân khỏi phòng
+    // Xoá bệnh nhân theo mã
     public boolean xoaBenhNhan(String maBenhNhan) {
         return dsBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(maBenhNhan));
     }
 
-    // Hiển thị thông tin phòng
-    public void hienThiThongTin() {
-        System.out.println("Phòng: " + tenPhong + " - Khoa: " + khoa + " - Mã Bác sĩ: " + maBacSi);
-        System.out.println("Danh sách bệnh nhân:");
-        for (BenhNhan bn : dsBenhNhan) {
-            bn.hienThiThongTin();
-        }
-    }
-
-    // Xóa bệnh nhân khỏi phòng
+    // Xoá bệnh nhân theo đối tượng
     public boolean xoaBenhNhanKhoiPhong(BenhNhan bn) {
         return dsBenhNhan.remove(bn);
     }
 
+    @Override
+    public String toString() {
+        return "PhongDieuTri{" +
+                "maPhong='" + maPhong + '\'' +
+                ", tenPhong='" + tenPhong + '\'' +
+                ", khoa='" + khoa + '\'' +
+                ", sucChua=" + sucChua +
+                ", maBacSi='" + maBacSi + '\'' +
+                ", dsBenhNhan=" + dsBenhNhan +
+                '}';
+    }
 }
