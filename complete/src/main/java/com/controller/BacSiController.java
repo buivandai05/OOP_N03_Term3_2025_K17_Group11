@@ -12,15 +12,18 @@ public class BacSiController {
 
     private List<BacSi> danhSachBacSi = new ArrayList<>();
 
+    // Lấy danh sách tất cả bác sĩ
     @GetMapping
     public List<BacSi> getAll() {
         try {
             return danhSachBacSi;
         } catch (Exception e) {
-            return null;
+            System.out.println("Lỗi khi lấy danh sách bác sĩ: " + e.getMessage());
+            return new ArrayList<>();
         }
     }
 
+    // Thêm bác sĩ mới
     @PostMapping
     public String themBacSi(@RequestBody BacSi bs) {
         try {
@@ -32,10 +35,12 @@ public class BacSiController {
             danhSachBacSi.add(bs);
             return "✅ Thêm bác sĩ thành công!";
         } catch (Exception e) {
-            return "❌ Lỗi: " + e.getMessage();
+            System.out.println("Lỗi khi thêm bác sĩ: " + e.getMessage());
+            return "❌ Lỗi hệ thống khi thêm bác sĩ.";
         }
     }
 
+    // Lấy bác sĩ theo mã
     @GetMapping("/{maBacSi}")
     public BacSi getByMa(@PathVariable String maBacSi) {
         try {
@@ -44,9 +49,9 @@ public class BacSiController {
                     return b;
                 }
             }
-            return null;
         } catch (Exception e) {
-            return null;
+            System.out.println("Lỗi khi tìm bác sĩ theo mã: " + e.getMessage());
         }
+        return null;
     }
 }
