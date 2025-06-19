@@ -35,11 +35,17 @@
 ## 🧩 UML
 
 ---
-# 1.1 UML Class Diagram
+### 1.1 UML Class Diagram
 ![image](https://github.com/user-attachments/assets/4078119a-8485-4ae0-920a-d27018bca417)
 
-# 2. Lưu đồ thuật toán
+### 2. Lưu đồ thuật toán
 ![algo_diagram](https://github.com/user-attachments/assets/9b7eb24d-580c-4fdb-8ada-c0810dee4a15)
+
+---
+
+## Giao diện trang chủ:
+![Uploading homeHPT.PNG…]()
+
 
 
 
