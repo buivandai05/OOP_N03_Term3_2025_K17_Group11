@@ -16,9 +16,10 @@ public class BenhNhanController {
     @GetMapping
     public List<BenhNhan> getAllBenhNhan() {
         try {
-            return danhSachBenhNhan;
+            return danhSachBenhNhan; // Spring Boot tự convert sang JSON
         } catch (Exception e) {
-            return null;
+            System.out.println("Lỗi khi lấy danh sách bệnh nhân: " + e.getMessage());
+            return new ArrayList<>(); // Trả danh sách rỗng nếu lỗi
         }
     }
 
@@ -34,7 +35,8 @@ public class BenhNhanController {
             danhSachBenhNhan.add(bn);
             return "✅ Thêm bệnh nhân thành công!";
         } catch (Exception e) {
-            return "❌ Lỗi: " + e.getMessage();
+            System.out.println("Lỗi khi thêm bệnh nhân: " + e.getMessage());
+            return "❌ Lỗi hệ thống khi thêm bệnh nhân.";
         }
     }
 
@@ -47,9 +49,9 @@ public class BenhNhanController {
                     return b;
                 }
             }
-            return null;
         } catch (Exception e) {
-            return null;
+            System.out.println("Lỗi khi tìm bệnh nhân theo mã: " + e.getMessage());
         }
+        return null; // Có thể thay bằng ResponseEntity.notFound().build()
     }
 }
