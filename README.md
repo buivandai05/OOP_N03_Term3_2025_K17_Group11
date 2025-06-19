@@ -44,7 +44,8 @@
 ---
 
 ## Giao diện trang chủ:
-![Uploading homeHPT.PNG…]()
+![homeHPT](https://github.com/user-attachments/assets/d0ad6be4-0c89-48a9-930a-d184a16324f6)
+
 
 
 
