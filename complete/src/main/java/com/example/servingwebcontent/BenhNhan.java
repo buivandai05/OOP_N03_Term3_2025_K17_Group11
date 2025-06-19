@@ -123,4 +123,26 @@ public class BenhNhan {
         try {
             this.chuanDoan = chuanDoan;
         } catch (Exception e) {
-            System.out.println("Lỗi s
+            System.out.println("Lỗi setChuanDoan: " + e.getMessage());
+        }
+    }
+
+    // Ghi đè toString để debug
+    @Override
+    public String toString() {
+        try {
+            return "BenhNhan{" +
+                    "maBenhNhan='" + maBenhNhan + '\'' +
+                    ", tenBenhNhan='" + tenBenhNhan + '\'' +
+                    ", tuoi=" + tuoi +
+                    ", gioiTinh='" + gioiTinh + '\'' +
+                    ", diaChi='" + diaChi + '\'' +
+                    ", soDienThoai='" + soDienThoai + '\'' +
+                    ", maPhong='" + maPhong + '\'' +
+                    ", chuanDoan='" + chuanDoan + '\'' +
+                    '}';
+        } catch (Exception e) {
+            return "❌ Lỗi toString: " + e.getMessage();
+        }
+    }
+}
