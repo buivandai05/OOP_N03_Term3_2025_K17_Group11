@@ -29,14 +29,14 @@ public class BacSiController {
         try {
             for (BacSi b : danhSachBacSi) {
                 if (b.getMaBacSi().equals(bs.getMaBacSi())) {
-                    return "❌ Mã bác sĩ đã tồn tại!";
+                    return " Mã bác sĩ đã tồn tại!";
                 }
             }
             danhSachBacSi.add(bs);
             return "✅ Thêm bác sĩ thành công!";
         } catch (Exception e) {
             System.out.println("Lỗi khi thêm bác sĩ: " + e.getMessage());
-            return "❌ Lỗi hệ thống khi thêm bác sĩ.";
+            return " Lỗi thêm bác sĩ.";
         }
     }
 
@@ -50,7 +50,7 @@ public class BacSiController {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Lỗi khi tìm bác sĩ theo mã: " + e.getMessage());
+            System.out.println("Lỗi tìm bác sĩ theo mã: " + e.getMessage());
         }
         return null;
     }
