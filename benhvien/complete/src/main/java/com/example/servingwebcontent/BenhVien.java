@@ -1,9 +1,4 @@
-package service;
-
-import entity.BacSi;
-import entity.BenhNhan;
-import entity.PhongDieuTri;
-
+package com.example.servingwebcontent;
 import java.util.ArrayList;
 import java.util.List;
 

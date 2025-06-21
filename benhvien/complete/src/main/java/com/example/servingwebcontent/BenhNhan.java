@@ -1,4 +1,4 @@
-package entity;
+package com.example.servingwebcontent;
 
 public class BenhNhan {
     private String maBenhNhan;

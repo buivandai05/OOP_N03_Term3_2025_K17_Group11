@@ -1,17 +1,18 @@
-import entity.BacSi;
-import entity.BenhNhan;
-import entity.BenhVien;
-import entity.PhongDieuTri;
+package com.example.servingwebcontent;
 
-import java.util.Scanner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@SpringBootApplication
 public class App {
+
     public static void main(String[] args) {
         try {
-            new controller.LoginController();
+            SpringApplication.run(App.class, args);
         } catch (Exception e) {
-            System.err.println("Đã xảy ra lỗi khi khởi động ứng dụng: " + e.getMessage());
+            System.err.println("Đã xảy ra lỗi khi khởi động Spring Boot: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
 }

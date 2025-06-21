@@ -1,7 +1,6 @@
-package controller;
+package com.controller;
 
-import entity.PhongDieuTri;
-import entity.BenhNhan;
+import com.example.servingwebcontent.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;

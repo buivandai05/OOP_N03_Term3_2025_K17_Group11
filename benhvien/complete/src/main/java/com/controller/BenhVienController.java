@@ -1,10 +1,7 @@
-package controller;
+package com.controller;
 
-import entity.BacSi;
-import entity.BenhNhan;
-import entity.PhongDieuTri;
+import com.example.servingwebcontent.*;
 import org.springframework.web.bind.annotation.*;
-import service.BenhVien;
 
 import java.util.List;
 

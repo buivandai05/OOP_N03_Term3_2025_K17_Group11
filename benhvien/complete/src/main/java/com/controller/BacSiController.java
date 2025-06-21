@@ -1,6 +1,6 @@
-package com.example.benhvien.controller;
+package com.controller;
 
-import com.example.benhvien.entity.BacSi;
+import com.example.servingwebcontent.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
