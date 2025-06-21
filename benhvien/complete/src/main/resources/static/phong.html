@@ -16,10 +16,10 @@
         .card {
             margin-bottom: 20px;
         }
-        #formAddRoom input {
+        #formAddRoom input, #formAssignPatient input {
             border-radius: 0.5rem;
         }
-        #formAddRoom button {
+        #formAddRoom button, #formAssignPatient button {
             border-radius: 0.5rem;
         }
     </style>
@@ -67,11 +67,31 @@
             <tbody></tbody>
         </table>
     </div>
+
+    <!-- Form Gán Bệnh Nhân Vào Phòng -->
+    <div class="card shadow-sm p-4 mt-4">
+        <h5 class="card-title mb-3">Gán Bệnh Nhân Vào Phòng</h5>
+        <form id="formAssignPatient">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Mã Phòng" id="assignMaPhong" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Mã Bệnh Nhân" id="assignMaBenhNhan" required>
+                </div>
+                <div class="col-md-4 d-grid">
+                    <button type="submit" class="btn btn-success">Gán Bệnh Nhân</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
+<!-- Script xử lý -->
 <script>
     const form = document.getElementById('formAddRoom');
     const tbl = document.getElementById('tblRooms').querySelector('tbody');
+    const formAssign = document.getElementById('formAssignPatient');
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -108,6 +128,22 @@
             </tr>`;
         });
     }
+
+    // Gán Bệnh Nhân Vào Phòng
+    formAssign.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const maPhong = document.getElementById('assignMaPhong').value.trim();
+        const maBenhNhan = document.getElementById('assignMaBenhNhan').value.trim();
+
+        const res = await fetch(`/api/phong/${maPhong}/gan-benh-nhan?maBenhNhan=${maBenhNhan}`, {
+            method: 'POST'
+        });
+
+        const msg = await res.text();
+        alert(msg);
+
+        formAssign.reset();
+    });
 
     loadRooms();
 </script>

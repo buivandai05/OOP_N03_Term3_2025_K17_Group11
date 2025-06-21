@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.example.servingwebcontent.*;
+import com.example.servingwebcontent.BacSi;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,46 +12,56 @@ public class BacSiController {
 
     private List<BacSi> danhSachBacSi = new ArrayList<>();
 
-    // Lấy danh sách tất cả bác sĩ
+    // API: Lấy tất cả bác sĩ
     @GetMapping
     public List<BacSi> getAll() {
-        try {
-            return danhSachBacSi;
-        } catch (Exception e) {
-            System.out.println("Lỗi khi lấy danh sách bác sĩ: " + e.getMessage());
-            return new ArrayList<>();
-        }
+        return danhSachBacSi;
     }
 
-    // Thêm bác sĩ mới
+    // API: Thêm bác sĩ mới
     @PostMapping
     public String themBacSi(@RequestBody BacSi bs) {
-        try {
-            for (BacSi b : danhSachBacSi) {
-                if (b.getMaBacSi().equals(bs.getMaBacSi())) {
-                    return " Mã bác sĩ đã tồn tại!";
-                }
+        for (BacSi b : danhSachBacSi) {
+            if (b.getMaBacSi().equals(bs.getMaBacSi())) {
+                return "❌ Mã bác sĩ đã tồn tại!";
             }
-            danhSachBacSi.add(bs);
-            return "✅ Thêm bác sĩ thành công!";
-        } catch (Exception e) {
-            System.out.println("Lỗi khi thêm bác sĩ: " + e.getMessage());
-            return " Lỗi thêm bác sĩ.";
         }
+        danhSachBacSi.add(bs);
+        return "✅ Thêm bác sĩ thành công!";
     }
 
-    // Lấy bác sĩ theo mã
+    // API: Lấy bác sĩ theo mã
     @GetMapping("/{maBacSi}")
     public BacSi getByMa(@PathVariable String maBacSi) {
-        try {
-            for (BacSi b : danhSachBacSi) {
-                if (b.getMaBacSi().equals(maBacSi)) {
-                    return b;
-                }
+        for (BacSi b : danhSachBacSi) {
+            if (b.getMaBacSi().equals(maBacSi)) {
+                return b;
             }
-        } catch (Exception e) {
-            System.out.println("Lỗi tìm bác sĩ theo mã: " + e.getMessage());
         }
         return null;
+    }
+
+    // ✅ API: Gán thêm 1 phòng cho bác sĩ
+    @PostMapping("/{maBacSi}/gan-phong")
+    public String ganPhongChoBacSi(@PathVariable String maBacSi, @RequestParam String maPhong) {
+        for (BacSi b : danhSachBacSi) {
+            if (b.getMaBacSi().equals(maBacSi)) {
+                boolean ok = b.themMaPhong(maPhong);
+                return ok ? "✅ Gán phòng thành công!" : "❌ Phòng đã được gán trước đó!";
+            }
+        }
+        return "❌ Không tìm thấy bác sĩ!";
+    }
+
+    // (Tuỳ chọn) API: Xoá phòng khỏi bác sĩ
+    @PostMapping("/{maBacSi}/xoa-phong")
+    public String xoaPhong(@PathVariable String maBacSi, @RequestParam String maPhong) {
+        for (BacSi b : danhSachBacSi) {
+            if (b.getMaBacSi().equals(maBacSi)) {
+                b.xoaMaPhong(maPhong);
+                return "✅ Đã xoá phòng khỏi bác sĩ!";
+            }
+        }
+        return "❌ Không tìm thấy bác sĩ!";
     }
 }
