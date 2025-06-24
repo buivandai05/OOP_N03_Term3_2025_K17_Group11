@@ -1,16 +1,24 @@
 package com.example.servingwebcontent;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PhongDieuTri {
+
     private String maPhong;
     private String tenPhong;
     private String khoa;
-    private int sucChua;
+    private int sucChua; // sức chứa tối đa
     private List<BenhNhan> dsBenhNhan;
     private String maBacSi;
 
+    // ✅ Constructor mặc định
+    public PhongDieuTri() {
+        this.dsBenhNhan = new ArrayList<>();
+    }
+
+    // ✅ Constructor đầy đủ
     public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua, String maBacSi) {
         this.maPhong = maPhong;
         this.tenPhong = tenPhong;
@@ -20,65 +28,89 @@ public class PhongDieuTri {
         this.dsBenhNhan = new ArrayList<>();
     }
 
+    // ✅ Constructor không có mã bác sĩ
     public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua) {
+        this(maPhong, tenPhong, khoa, sucChua, null);
+    }
+
+    // --- Getters & Setters ---
+    public String getMaPhong() {
+        return maPhong;
+    }
+
+    public void setMaPhong(String maPhong) {
         this.maPhong = maPhong;
+    }
+
+    public String getTenPhong() {
+        return tenPhong;
+    }
+
+    public void setTenPhong(String tenPhong) {
         this.tenPhong = tenPhong;
+    }
+
+    public String getKhoa() {
+        return khoa;
+    }
+
+    public void setKhoa(String khoa) {
         this.khoa = khoa;
+    }
+
+    public int getSucChua() {
+        return sucChua;
+    }
+
+    public void setSucChua(int sucChua) {
         this.sucChua = sucChua;
-        this.dsBenhNhan = new ArrayList<>();
     }
 
-    // Getters và Setters
-    public String getMaPhong() { return maPhong; }
-    public void setMaPhong(String maPhong) { this.maPhong = maPhong; }
+    public String getMaBacSi() {
+        return maBacSi;
+    }
 
-    public String getTenPhong() { return tenPhong; }
-    public void setTenPhong(String tenPhong) { this.tenPhong = tenPhong; }
+    public void setMaBacSi(String maBacSi) {
+        this.maBacSi = maBacSi;
+    }
 
-    public String getKhoa() { return khoa; }
-    public void setKhoa(String khoa) { this.khoa = khoa; }
+    public List<BenhNhan> getDsBenhNhan() {
+        return dsBenhNhan;
+    }
 
-    public int getSucChua() { return sucChua; }
-    public void setSucChua(int sucChua) { this.sucChua = sucChua; }
+    public void setDsBenhNhan(List<BenhNhan> dsBenhNhan) {
+        this.dsBenhNhan = dsBenhNhan;
+    }
 
-    public String getMaBacSi() { return maBacSi; }
-    public void setMaBacSi(String maBacSi) { this.maBacSi = maBacSi; }
+    // --- Phương thức tiện ích ---
 
-    public List<BenhNhan> getDsBenhNhan() { return dsBenhNhan; }
-
-    // Thêm bệnh nhân
     public boolean themBenhNhanVaoPhong(BenhNhan bn) {
-        try {
-            if (dsBenhNhan.size() < sucChua) {
-                dsBenhNhan.add(bn);
-                return true;
-            }
-            return false;
-        } catch (Exception e) {
-            System.err.println("Lỗi khi thêm bệnh nhân vào phòng: " + e.getMessage());
-            return false;
+        if (dsBenhNhan.size() < sucChua) {
+            dsBenhNhan.add(bn);
+            return true;
         }
+        return false; // Phòng đã đầy
     }
 
-    // Xoá bệnh nhân theo mã
     public boolean xoaBenhNhan(String maBenhNhan) {
-        try {
-            return dsBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(maBenhNhan));
-        } catch (Exception e) {
-            System.err.println("Lỗi khi xoá bệnh nhân theo mã: " + e.getMessage());
-            return false;
-        }
+        return dsBenhNhan.removeIf(bn -> bn.getMaBenhNhan().equals(maBenhNhan));
     }
 
-    // Xoá bệnh nhân theo đối tượng
     public boolean xoaBenhNhanKhoiPhong(BenhNhan bn) {
-        try {
-            return dsBenhNhan.remove(bn);
-        } catch (Exception e) {
-            System.err.println("Lỗi khi xoá bệnh nhân khỏi phòng: " + e.getMessage());
-            return false;
-        }
+        return dsBenhNhan.remove(bn);
     }
+
+    public int getSoLuongBenhNhanHienTai() {
+        return dsBenhNhan.size();
+    }
+
+    @JsonProperty("soGiuongTrong")
+    public int getSoGiuongConTrong() {
+        return sucChua - dsBenhNhan.size();
+    }
+
+
+
 
     @Override
     public String toString() {

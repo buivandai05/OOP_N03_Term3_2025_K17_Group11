@@ -14,6 +14,19 @@ public class BenhVien {
         this.danhSachPhong = new ArrayList<>();
     }
 
+    public List<BacSi> getDanhSachBacSi() {
+    return this.danhSachBacSi;
+    }
+
+    public List<BenhNhan> getDanhSachBenhNhan() {
+        return this.danhSachBenhNhan;
+    }
+
+    public List<PhongDieuTri> getDanhSachPhong() {
+        return this.danhSachPhong;
+    }
+
+
     // ========================
     // === QUẢN LÝ BỆNH NHÂN ===
     // ========================

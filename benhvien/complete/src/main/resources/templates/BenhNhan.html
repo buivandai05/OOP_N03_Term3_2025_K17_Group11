@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>🧑‍⚕️ Quản Lý Bệnh Nhân</title> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body { 
+      background: #f8f9fa; 
+      overflow-x: hidden;
+    }
+    .sidebar {
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 240px;
+      background-color: #343a40;
+      color: #fff;
+    }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 15px 20px;
+    }
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+    .content {
+      margin-left: 240px;
+      padding: 40px;
+    }
+    h2 { text-align: center; margin-bottom: 30px; }
+    .card { margin-bottom: 20px; }
+    input, button { border-radius: 0.5rem; }
+  </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h3 class="text-center py-4">🏥 Quản Lý BV</h3>
+  <a href="/">🏠 Trang Chủ</a>
+  <a href="/benhnhan" style="background-color: #495057;">🧑‍🤝‍🧑 Quản Lý Bệnh Nhân</a>
+  <a href="/phong">🏥 Quản Lý Phòng</a>
+  <a href="/bacsi">👨‍⚕️ Quản Lý Bác Sĩ</a>
+  <a href="/hoso">📄 Xem Hồ Sơ Bệnh Nhân</a>
+</div>
+
+<!-- Content -->
+<div class="content">
+  <h2>🧑‍🤝‍🧑 HỆ THỐNG QUẢN LÝ BỆNH NHÂN</h2>
+
+  <!-- Form Thêm / Cập nhật Bệnh Nhân -->
+  <div class="card shadow-sm p-4 mb-4">
+    <h5 class="card-title mb-3" id="formTitle">Thêm Bệnh Nhân Mới</h5>
+    <form id="formAddPatient">
+      <div class="row g-3 mb-3">
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Mã Bệnh Nhân" id="maBenhNhan" required>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Tên Bệnh Nhân" id="tenBenhNhan" required>
+        </div>
+        <div class="col-md-1">
+          <input type="number" class="form-control" placeholder="Tuổi" id="tuoi" required>
+        </div>
+        <div class="col-md-2">
+          <input type="text" class="form-control" placeholder="Giới Tính" id="gioiTinh" required>
+        </div>
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Địa Chỉ" id="diaChi" required>
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-md-3">
+          <input type="text" class="form-control" placeholder="Số Điện Thoại" id="soDienThoai" required>
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" placeholder="Chuẩn Đoán" id="chuanDoan" required>
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </div>
+        <div class="col-md-2 d-grid">
+          <button type="button" class="btn btn-secondary" onclick="resetForm()">Hủy</button>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <!-- Danh Sách Bệnh Nhân -->
+  <div class="card shadow-sm p-4">
+    <h5 class="card-title mb-3">Danh Sách Bệnh Nhân</h5>
+    <table class="table table-bordered table-striped" id="tblPatients">
+      <thead class="table-dark">
+        <tr>
+          <th>Mã</th>
+          <th>Tên</th>
+          <th>Tuổi</th>
+          <th>Giới Tính</th>
+          <th>Địa Chỉ</th>
+          <th>Điện Thoại</th>
+          <th>Chuẩn Đoán</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Script -->
+<script>
+  const API = 'http://localhost:8080/api/benhnhan';
+  const form = document.getElementById('formAddPatient');
+  const tbl = document.getElementById('tblPatients').querySelector('tbody');
+  const formTitle = document.getElementById('formTitle');
+
+  let isEdit = false;
+  let editMaBN = '';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      maBenhNhan: document.getElementById('maBenhNhan').value.trim(),
+      tenBenhNhan: document.getElementById('tenBenhNhan').value.trim(),
+      tuoi: parseInt(document.getElementById('tuoi').value),
+      gioiTinh: document.getElementById('gioiTinh').value.trim(),
+      diaChi: document.getElementById('diaChi').value.trim(),
+      soDienThoai: document.getElementById('soDienThoai').value.trim(),
+      chuanDoan: document.getElementById('chuanDoan').value.trim()
+    };
+
+    let res, msg;
+    if (isEdit) {
+      res = await fetch(`${API}/${editMaBN}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      msg = await res.text();
+    } else {
+      res = await fetch(API, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      msg = await res.text();
+    }
+
+    alert(msg);
+    resetForm();
+    loadPatients();
+  });
+
+  async function loadPatients() {
+    const res = await fetch(API);
+    const patients = await res.json();
+    tbl.innerHTML = '';
+    patients.forEach(p => {
+      tbl.innerHTML += `<tr>
+        <td>${p.maBenhNhan}</td>
+        <td>${p.tenBenhNhan}</td>
+        <td>${p.tuoi}</td>
+        <td>${p.gioiTinh}</td>
+        <td>${p.diaChi}</td>
+        <td>${p.soDienThoai}</td>
+        <td>${p.chuanDoan}</td>
+        <td>
+          <button class="btn btn-sm btn-warning me-1" onclick='editPatient(${JSON.stringify(p)})'>Sửa</button>
+          <button class="btn btn-sm btn-danger" onclick='deletePatient("${p.maBenhNhan}")'>Xoá</button>
+        </td>
+      </tr>`;
+    });
+  }
+
+  function editPatient(p) {
+    isEdit = true;
+    editMaBN = p.maBenhNhan;
+    formTitle.textContent = "Cập Nhật Bệnh Nhân";
+    document.getElementById('maBenhNhan').value = p.maBenhNhan;
+    document.getElementById('tenBenhNhan').value = p.tenBenhNhan;
+    document.getElementById('tuoi').value = p.tuoi;
+    document.getElementById('gioiTinh').value = p.gioiTinh;
+    document.getElementById('diaChi').value = p.diaChi;
+    document.getElementById('soDienThoai').value = p.soDienThoai;
+    document.getElementById('chuanDoan').value = p.chuanDoan;
+    document.getElementById('maBenhNhan').readOnly = true;
+  }
+
+  async function deletePatient(ma) {
+    if (confirm(`Bạn chắc chắn muốn xoá bệnh nhân ${ma}?`)) {
+      const res = await fetch(`${API}/${ma}`, { method: 'DELETE' });
+      const msg = await res.text();
+      alert(msg);
+      loadPatients();
+    }
+  }
+
+  function resetForm() {
+    isEdit = false;
+    editMaBN = '';
+    formTitle.textContent = "Thêm Bệnh Nhân Mới";
+    form.reset();
+    document.getElementById('maBenhNhan').readOnly = false;
+  }
+
+  loadPatients();
+</script>
+
+</body>
+</html>

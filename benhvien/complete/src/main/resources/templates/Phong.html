@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <title>🏥 Quản Lý Phòng Điều Trị</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background: #f8f9fa;
+        overflow-x: hidden;
+      }
+      .sidebar {
+        height: 100vh;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 240px;
+        background-color: #343a40;
+        color: #fff;
+      }
+      .sidebar a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 15px 20px;
+      }
+      .sidebar a:hover {
+        background-color: #495057;
+      }
+      .content {
+        margin-left: 240px;
+        padding: 40px;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .card {
+        margin-bottom: 20px;
+      }
+      input,
+      button {
+        border-radius: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3 class="text-center py-4">🏥 Quản Lý BV</h3>
+      <a href="/">🏠 Trang Chủ</a>
+      <a href="/benhnhan">🧑‍🤝‍🧑 Quản Lý Bệnh Nhân</a>
+      <a href="/phong" style="background-color: #495057;">🏥 Quản Lý Phòng</a>
+      <a href="/bacsi">👨‍⚕️ Quản Lý Bác Sĩ</a>
+      <a href="/hoso">📄 Xem Hồ Sơ Bệnh Nhân</a>
+    </div>
+
+<!-- Content -->
+<div class="content">
+  <h2>🏥 HỆ THỐNG QUẢN LÝ PHÒNG ĐIỀU TRỊ</h2>
+
+  <!-- Row 1: Form Thêm Phòng + Gán Bệnh Nhân -->
+  <div class="row mb-4">
+    <!-- Form Thêm / Sửa Phòng -->
+    <div class="col-md-7">
+      <div class="card shadow-sm p-4">
+        <h5 class="card-title mb-3" id="formTitle">Thêm Phòng Mới</h5>
+        <form id="formAddRoom">
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Mã Phòng" id="maPhong" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Tên Phòng" id="tenPhong" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Khoa" id="khoa" required>
+            </div>
+            <div class="col-md-4">
+              <input type="number" class="form-control" placeholder="Sức Chứa" id="sucChua" required>
+            </div>
+            <div class="col-md-2 d-grid">
+              <button type="submit" class="btn btn-primary">Lưu</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Form Gán Bệnh Nhân Vào Phòng -->
+    <div class="col-md-5">
+      <div class="card shadow-sm p-4">
+        <h5 class="card-title mb-3">Thêm Bệnh Nhân Vào Phòng</h5>
+        <form id="formAssignPatient">
+          <div class="row g-3 mb-3">
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Mã Phòng" id="assignMaPhong" required>
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Mã Bệnh Nhân" id="assignMaBenhNhan" required>
+            </div>
+            <div class="col-12 d-grid">
+              <button type="submit" class="btn btn-success">Thêm Bệnh Nhân</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Row 2: Danh Sách Phòng Điều Trị -->
+  <div class="card shadow-sm p-4">
+    <h5 class="card-title mb-3">Danh Sách Phòng Điều Trị</h5>
+    <table class="table table-bordered table-striped" id="tblRooms">
+      <thead class="table-dark">
+        <tr>
+          <th>Mã</th>
+          <th>Tên</th>
+          <th>Khoa</th>
+          <th>Sức Chứa</th>
+          <th>Trống</th>
+          <th>Hành Động</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+
+    <!-- Modal hiển thị danh sách bệnh nhân -->
+    <div class="modal fade" id="modalPatients" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Danh Sách Bệnh Nhân</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Đóng"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table table-bordered">
+              <thead class="table-dark">
+                <tr>
+                  <th>Mã Bệnh Nhân</th>
+                  <th>Tên Bệnh Nhân</th>
+                  <th>Tuổi</th>
+                  <th>Giới Tính</th>
+                  <th>Địa Chỉ</th>
+                  <th>Điện Thoại</th>
+                  <th>Chuẩn Đoán</th>
+                  <th>Hành Động</th>
+                </tr>
+              </thead>
+              <tbody id="modalPatientsBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      const API = "/api/phong";
+      const form = document.getElementById("formAddRoom");
+      const tbl = document.getElementById("tblRooms").querySelector("tbody");
+      const formAssign = document.getElementById("formAssignPatient");
+      const formTitle = document.getElementById("formTitle");
+
+      let isEdit = false;
+      let editMaPhong = "";
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = {
+          maPhong: document.getElementById("maPhong").value.trim(),
+          tenPhong: document.getElementById("tenPhong").value.trim(),
+          khoa: document.getElementById("khoa").value.trim(),
+          sucChua: parseInt(document.getElementById("sucChua").value),
+        };
+
+        let res, msg;
+        if (isEdit) {
+          res = await fetch(`${API}/${editMaPhong}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          msg = await res.text();
+        } else {
+          res = await fetch(API, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+          msg = await res.text();
+        }
+
+        alert(msg);
+        resetForm();
+        loadRooms();
+      });
+
+      async function loadRooms() {
+        const res = await fetch(API);
+        const rooms = await res.json();
+        tbl.innerHTML = "";
+        rooms.forEach((r) => {
+          tbl.innerHTML += `<tr>
+        <td>${r.maPhong}</td>
+        <td>${r.tenPhong}</td>
+        <td>${r.khoa}</td>
+        <td>${r.sucChua}</td>
+        <td>${r.soGiuongTrong}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-1" onclick='viewPatients("${
+            r.maPhong
+          }")'>Xem Bệnh Nhân</button>
+          <button class="btn btn-sm btn-warning me-1" onclick='editRoom(${JSON.stringify(
+            r
+          )})'>Sửa</button>
+          <button class="btn btn-sm btn-danger" onclick='deleteRoom("${
+            r.maPhong
+          }")'>Xoá</button>
+        </td>
+      </tr>`;
+        });
+      }
+
+      function editRoom(r) {
+        isEdit = true;
+        editMaPhong = r.maPhong;
+        formTitle.textContent = "Cập Nhật Phòng";
+        document.getElementById("maPhong").value = r.maPhong;
+        document.getElementById("tenPhong").value = r.tenPhong;
+        document.getElementById("khoa").value = r.khoa;
+        document.getElementById("sucChua").value = r.sucChua;
+
+        document.getElementById("maPhong").readOnly = true;
+      }
+
+      async function deleteRoom(ma) {
+        if (confirm(`Bạn chắc chắn muốn xoá phòng ${ma}?`)) {
+          const res = await fetch(`${API}/${ma}`, { method: "DELETE" });
+          const msg = await res.text();
+          alert(msg);
+          loadRooms();
+        }
+      }
+
+      function resetForm() {
+        isEdit = false;
+        editMaPhong = "";
+        formTitle.textContent = "Thêm Phòng Mới";
+        form.reset();
+        document.getElementById("maPhong").readOnly = false;
+      }
+
+      formAssign.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const maPhong = document.getElementById("assignMaPhong").value.trim();
+        const maBenhNhan = document
+          .getElementById("assignMaBenhNhan")
+          .value.trim();
+
+        const res = await fetch(
+          `${API}/${maPhong}/gan-benh-nhan?maBenhNhan=${maBenhNhan}`,
+          {
+            method: "POST",
+          }
+        );
+
+        const msg = await res.text();
+        alert(msg);
+        formAssign.reset();
+      });
+
+      loadRooms();
+
+      async function viewPatients(maPhong) {
+        const res = await fetch(`${API}/${maPhong}`);
+        const phong = await res.json();
+
+        const modalTitle = document.querySelector(
+          "#modalPatients .modal-title"
+        );
+        const modalBody = document.getElementById("modalPatientsBody");
+
+        modalTitle.textContent = `Danh Sách Bệnh Nhân - ${phong.tenPhong}`;
+        modalBody.innerHTML = "";
+
+        if (!phong.dsBenhNhan || phong.dsBenhNhan.length === 0) {
+          modalBody.innerHTML =
+            '<tr><td colspan="8" class="text-center text-muted">Chưa có bệnh nhân.</td></tr>';
+        } else {
+          phong.dsBenhNhan.forEach((bn) => {
+            modalBody.innerHTML += `
+          <tr>
+            <td>${bn.maBenhNhan}</td>
+            <td>${bn.tenBenhNhan}</td>
+            <td>${bn.tuoi}</td>
+            <td>${bn.gioiTinh}</td>
+            <td>${bn.diaChi}</td>
+            <td>${bn.soDienThoai}</td>
+            <td>${bn.chuanDoan}</td>
+            <td>
+              <button class="btn btn-sm btn-danger" onclick="removeBenhNhan('${maPhong}', '${bn.maBenhNhan}')">Xoá</button>
+            </td>
+          </tr>`;
+          });
+        }
+
+        const modal = new bootstrap.Modal(
+          document.getElementById("modalPatients")
+        );
+        modal.show();
+      }
+
+      async function removeBenhNhan(maPhong, maBenhNhan) {
+        if (
+          confirm(`Xác nhận xoá bệnh nhân ${maBenhNhan} khỏi phòng ${maPhong}?`)
+        ) {
+          const res = await fetch(
+            `${API}/${maPhong}/xoa-benh-nhan?maBenhNhan=${maBenhNhan}`,
+            {
+              method: "DELETE",
+            }
+          );
+
+          const msg = await res.text();
+          alert(msg);
+          viewPatients(maPhong);
+        }
+      }
+    </script>
+  </body>
+</html>
