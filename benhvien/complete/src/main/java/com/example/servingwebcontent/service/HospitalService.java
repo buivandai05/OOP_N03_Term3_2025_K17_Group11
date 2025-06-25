@@ -50,19 +50,19 @@ public class HospitalService {
         danhSachBacSi.add(b);
     }
 
-    // ✅ Thống kê tổng số bệnh nhân
+    //  Thống kê tổng số bệnh nhân
     public int getTongSoBenhNhan() {
         return danhSachBenhNhan.size();
     }
 
-    // ✅ Thống kê tổng số phòng còn giường trống
+    // Thống kê tổng số phòng còn giường trống
     public long getSoPhongConGiuongTrong() {
         return danhSachPhong.stream()
                 .filter(phong -> phong.getSoLuongBenhNhanHienTai() < phong.getSucChua())
                 .count();
     }
 
-    // ✅ Tổng số bác sĩ
+    //  Tổng số bác sĩ
     public int getTongSoBacSi() {
         return danhSachBacSi.size();
     }
