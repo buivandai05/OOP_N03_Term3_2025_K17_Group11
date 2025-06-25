@@ -25,7 +25,6 @@ public class BenhNhan {
         } catch (Exception e) {
             System.out.println("Lỗi khi khởi tạo BenhNhan: " + e.getMessage());
         } finally {
-            // Có thể ghi log nếu cần
         }
     }
 
