@@ -44,7 +44,7 @@
 ---
 
 ## Giao diện trang chủ:
-![homeHPT](https://github.com/user-attachments/assets/d0ad6be4-0c89-48a9-930a-d184a16324f6)
+![image](https://github.com/user-attachments/assets/bbc29623-20c5-4bb3-9675-c85b3f677928)
 
 
 
