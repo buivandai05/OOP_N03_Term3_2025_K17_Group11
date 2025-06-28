@@ -18,7 +18,7 @@ public class PhongDieuTriController {
         this.hospitalService = hospitalService;
     }
 
-    // ✅ GET tất cả phòng (cập nhật dsBenhNhan để tính giường trống chính xác)
+    //  GET tất cả phòng (cập nhật dsBenhNhan để tính giường trống chính xác)
     @GetMapping
     public List<PhongDieuTri> getAllPhong() {
         for (PhongDieuTri p : hospitalService.getDanhSachPhong()) {
@@ -33,7 +33,7 @@ public class PhongDieuTriController {
         return hospitalService.getDanhSachPhong();
     }
 
-    // ✅ GET 1 phòng chi tiết
+    //  GET 1 phòng chi tiết
     @GetMapping("/{maPhong}")
     public PhongDieuTri getPhongByMa(@PathVariable String maPhong) {
         for (PhongDieuTri p : hospitalService.getDanhSachPhong()) {
@@ -51,19 +51,19 @@ public class PhongDieuTriController {
         return null;
     }
 
-    // ✅ POST thêm phòng mới
+    //  POST thêm phòng mới
     @PostMapping
     public String themPhong(@RequestBody PhongDieuTri phong) {
         for (PhongDieuTri p : hospitalService.getDanhSachPhong()) {
             if (p.getMaPhong().equals(phong.getMaPhong())) {
-                return "❌ Mã phòng đã tồn tại!";
+                return " Mã phòng đã tồn tại!";
             }
         }
         hospitalService.getDanhSachPhong().add(phong);
-        return "✅ Thêm phòng thành công!";
+        return " Thêm phòng thành công!";
     }
 
-    // ✅ PUT cập nhật phòng
+    //  PUT cập nhật phòng
     @PutMapping("/{maPhong}")
     public String capNhatPhong(@PathVariable String maPhong, @RequestBody PhongDieuTri phong) {
         for (PhongDieuTri p : hospitalService.getDanhSachPhong()) {
@@ -71,20 +71,20 @@ public class PhongDieuTriController {
                 p.setTenPhong(phong.getTenPhong());
                 p.setKhoa(phong.getKhoa());
                 p.setSucChua(phong.getSucChua());
-                return "✅ Cập nhật phòng thành công!";
+                return " Cập nhật phòng thành công!";
             }
         }
-        return "❌ Không tìm thấy phòng!";
+        return " Không tìm thấy phòng!";
     }
 
-    // ✅ DELETE xoá phòng
+    //  DELETE xoá phòng
     @DeleteMapping("/{maPhong}")
     public String xoaPhong(@PathVariable String maPhong) {
         hospitalService.getDanhSachPhong().removeIf(p -> p.getMaPhong().equals(maPhong));
-        return "✅ Đã xoá phòng " + maPhong;
+        return " Đã xoá phòng " + maPhong;
     }
 
-    // ✅ POST gán bệnh nhân vào phòng
+    //  POST gán bệnh nhân vào phòng
     @PostMapping("/{maPhong}/gan-benh-nhan")
     public String ganBenhNhanVaoPhong(
             @PathVariable String maPhong,
@@ -97,7 +97,7 @@ public class PhongDieuTriController {
                 break;
             }
         }
-        if (foundPhong == null) return "❌ Không tìm thấy phòng!";
+        if (foundPhong == null) return " Không tìm thấy phòng!";
 
         BenhNhan foundBN = null;
         for (BenhNhan b : hospitalService.getDanhSachBenhNhan()) {
@@ -106,7 +106,7 @@ public class PhongDieuTriController {
                 break;
             }
         }
-        if (foundBN == null) return "❌ Không tìm thấy bệnh nhân!";
+        if (foundBN == null) return " Không tìm thấy bệnh nhân!";
 
         // Gán mã phòng cho bệnh nhân
         foundBN.setMaPhong(maPhong);
@@ -116,10 +116,10 @@ public class PhongDieuTriController {
             foundPhong.getDsBenhNhan().add(foundBN);
         }
 
-        return "✅ Đã gán bệnh nhân " + maBenhNhan + " vào phòng " + maPhong;
+        return " Đã gán bệnh nhân " + maBenhNhan + " vào phòng " + maPhong;
     }
 
-    // ✅ DELETE xoá bệnh nhân khỏi phòng
+    //  DELETE xoá bệnh nhân khỏi phòng
     @DeleteMapping("/{maPhong}/xoa-benh-nhan")
     public String xoaBenhNhanKhoiPhong(
             @PathVariable String maPhong,
@@ -132,7 +132,7 @@ public class PhongDieuTriController {
                 break;
             }
         }
-        if (foundPhong == null) return "❌ Không tìm thấy phòng!";
+        if (foundPhong == null) return " Không tìm thấy phòng!";
 
         BenhNhan foundBN = null;
         for (BenhNhan b : hospitalService.getDanhSachBenhNhan()) {
@@ -141,7 +141,7 @@ public class PhongDieuTriController {
                 break;
             }
         }
-        if (foundBN == null) return "❌ Không tìm thấy bệnh nhân!";
+        if (foundBN == null) return " Không tìm thấy bệnh nhân!";
 
         // Xoá bệnh nhân ra khỏi danh sách của phòng
         boolean removed = foundPhong.xoaBenhNhan(maBenhNhan);
@@ -149,6 +149,6 @@ public class PhongDieuTriController {
         // Cập nhật cả mã phòng của bệnh nhân về null
         foundBN.setMaPhong(null);
 
-        return removed ? "✅ Đã xoá bệnh nhân khỏi phòng!" : "❌ Không tìm thấy bệnh nhân trong phòng!";
+        return removed ? " Đã xoá bệnh nhân khỏi phòng!" : " Không tìm thấy bệnh nhân trong phòng!";
     }
 }

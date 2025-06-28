@@ -22,26 +22,26 @@ public class HomeController {
         model.addAttribute("tongBenhNhan", hospitalService.getTongSoBenhNhan());
         model.addAttribute("soPhongConTrong", hospitalService.getSoPhongConGiuongTrong());
         model.addAttribute("tongBacSi", hospitalService.getTongSoBacSi());
-        return "index"; // Tên file Thymeleaf: index.html (nên viết thường)
+        return "index"; 
     }
 
     @GetMapping("/bacsi")
     public String bacSiPage() {
-        return "BacSi"; // src/main/resources/templates/BacSi.html
+        return "BacSi"; 
     }
 
     @GetMapping("/benhnhan")
     public String benhNhanPage() {
-        return "BenhNhan"; // src/main/resources/templates/BenhNhan.html
+        return "BenhNhan"; // s
     }
 
     @GetMapping("/phong")
     public String phongPage() {
-        return "Phong"; // src/main/resources/templates/Phong.html
+        return "Phong"; 
     }
 
     @GetMapping("/hoso")
     public String hosoPage() {
-        return "HoSo"; // src/main/resources/templates/HoSo.html
+        return "HoSo"; 
     }
 }

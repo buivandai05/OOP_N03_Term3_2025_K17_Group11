@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/benhnhan")
-@CrossOrigin(origins = "*") // cần thiết nếu frontend khác domain
 public class BenhNhanController {
 
     private final HospitalService hospitalService;
@@ -26,11 +25,11 @@ public class BenhNhanController {
     public String themBenhNhan(@RequestBody BenhNhan bn) {
         for (BenhNhan b : hospitalService.getDanhSachBenhNhan()) {
             if (b.getMaBenhNhan().equals(bn.getMaBenhNhan())) {
-                return "❌ Mã bệnh nhân đã tồn tại!";
+                return " Mã bệnh nhân đã tồn tại!";
             }
         }
         hospitalService.getDanhSachBenhNhan().add(bn);
-        return "✅ Thêm bệnh nhân thành công!";
+        return " Thêm bệnh nhân thành công!";
     }
 
     @PutMapping("/{id}")
@@ -39,16 +38,16 @@ public class BenhNhanController {
         for (int i = 0; i < ds.size(); i++) {
             if (ds.get(i).getMaBenhNhan().equals(id)) {
                 ds.set(i, updated);
-                return "✅ Cập nhật thành công!";
+                return " Cập nhật thành công!";
             }
         }
-        return "❌ Không tìm thấy bệnh nhân để cập nhật!";
+        return " Không tìm thấy bệnh nhân để cập nhật!";
     }
 
     @DeleteMapping("/{id}")
     public String xoaBenhNhan(@PathVariable String id) {
         List<BenhNhan> ds = hospitalService.getDanhSachBenhNhan();
         boolean removed = ds.removeIf(bn -> bn.getMaBenhNhan().equals(id));
-        return removed ? "🗑️ Đã xoá bệnh nhân!" : "❌ Không tìm thấy bệnh nhân!";
+        return removed ? " Đã xoá bệnh nhân!" : " Không tìm thấy bệnh nhân!";
     }
 }

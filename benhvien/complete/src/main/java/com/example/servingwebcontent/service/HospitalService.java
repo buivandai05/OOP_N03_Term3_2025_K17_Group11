@@ -16,11 +16,11 @@ public class HospitalService {
     private final List<BacSi> danhSachBacSi = new ArrayList<>();
 
 {
-        // Thêm phòng mẫu
+        //phòng mẫu
         danhSachPhong.add(new PhongDieuTri("P001", "Phòng 101", "Khoa Nội", 4));
         danhSachPhong.add(new PhongDieuTri("P002", "Phòng 102", "Khoa Ngoại", 3));
 
-        // Thêm bác sĩ mẫu
+        //bác sĩ mẫu
         danhSachBacSi.add(new BacSi("BS001", "Nguyễn Văn A", "Khoa Nội", "0123456789"));
         danhSachBacSi.add(new BacSi("BS002", "Trần Thị B", "Khoa Ngoại", "03456987"));
 }
@@ -37,7 +37,6 @@ public class HospitalService {
         return danhSachBacSi;
     }
 
-    // Thêm dữ liệu
     public void themBenhNhan(BenhNhan bn) {
         danhSachBenhNhan.add(bn);
     }
@@ -50,12 +49,12 @@ public class HospitalService {
         danhSachBacSi.add(b);
     }
 
-    //  Thống kê tổng số bệnh nhân
+    //  Tổng số bệnh nhân
     public int getTongSoBenhNhan() {
         return danhSachBenhNhan.size();
     }
 
-    // Thống kê tổng số phòng còn giường trống
+    // Tổng số phòng còn giường trống
     public long getSoPhongConGiuongTrong() {
         return danhSachPhong.stream()
                 .filter(phong -> phong.getSoLuongBenhNhanHienTai() < phong.getSucChua())

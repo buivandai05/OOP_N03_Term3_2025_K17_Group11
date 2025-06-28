@@ -21,27 +21,26 @@ public class HoSoBenhNhanController {
 
     @GetMapping("/{maBenhNhan}")
     public Map<String, Object> getHoSo(@PathVariable String maBenhNhan) {
-        // 1. Tìm bệnh nhân
+        // Tìm bệnh nhân
         BenhNhan bn = hospitalService.getDanhSachBenhNhan().stream()
                 .filter(b -> b.getMaBenhNhan().equals(maBenhNhan))
                 .findFirst().orElse(null);
 
         if (bn == null) return null;
 
-        // 2. Tìm phòng
+        //  Tìm phòng
         PhongDieuTri phong = hospitalService.getDanhSachPhong().stream()
                 .filter(p -> p.getMaPhong().equals(bn.getMaPhong()))
                 .findFirst().orElse(null);
 
-        // 3. Tìm bác sĩ
+        //  Tìm bác sĩ
         BacSi bacSi = null;
         if (phong != null && phong.getMaBacSi() != null) {
             bacSi = hospitalService.getDanhSachBacSi().stream()
                     .filter(b -> b.getMaBacSi().equals(phong.getMaBacSi()))
                     .findFirst().orElse(null);
         }
-
-        // 4. Gói dữ liệu vào 1 Map thay vì DTO
+ 
         Map<String, Object> result = new HashMap<>();
         result.put("benhNhan", bn);
         result.put("phong", phong);

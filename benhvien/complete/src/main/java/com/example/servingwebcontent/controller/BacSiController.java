@@ -24,7 +24,7 @@ public class BacSiController {
         return hospitalService.getDanhSachBacSi();
     }
 
-    // POST thêm hoặc cập nhật bác sĩ
+    // Thêm hoặc cập nhật bác sĩ
     @PostMapping
     public String themHoacCapNhatBacSi(@RequestBody BacSi bs) {
         List<BacSi> danhSachBacSi = hospitalService.getDanhSachBacSi();
@@ -40,7 +40,7 @@ public class BacSiController {
         return "✅ Thêm bác sĩ thành công!";
     }
 
-    // GET chi tiết 1 bác sĩ
+    // GET 1 bác sĩ
     @GetMapping("/{maBacSi}")
     public BacSi getByMa(@PathVariable String maBacSi) {
         return hospitalService.getDanhSachBacSi().stream()
@@ -53,35 +53,34 @@ public class BacSiController {
     public String xoaBacSi(@PathVariable String maBacSi) {
         List<BacSi> danhSachBacSi = hospitalService.getDanhSachBacSi();
         danhSachBacSi.removeIf(b -> b.getMaBacSi().equals(maBacSi));
-        // Đồng thời xoá quan hệ phòng phụ trách
         for (PhongDieuTri p : hospitalService.getDanhSachPhong()) {
             if (maBacSi.equals(p.getMaBacSi())) {
                 p.setMaBacSi(null);
             }
         }
-        return "✅ Đã xoá bác sĩ " + maBacSi;
+        return " Đã xoá bác sĩ " + maBacSi;
     }
 
-    // POST gán phòng cho bác sĩ
+    // Gán phòng cho bác sĩ
     @PostMapping("/{maBacSi}/gan-phong")
     public String ganPhongChoBacSi(@PathVariable String maBacSi, @RequestParam String maPhong) {
         BacSi bacSi = hospitalService.getDanhSachBacSi().stream()
                 .filter(b -> b.getMaBacSi().equals(maBacSi))
                 .findFirst().orElse(null);
 
-        if (bacSi == null) return "❌ Không tìm thấy bác sĩ!";
+        if (bacSi == null) return " Không tìm thấy bác sĩ!";
 
         boolean ok = bacSi.themMaPhong(maPhong);
-        if (!ok) return "❌ Phòng đã được gán trước đó!";
+        if (!ok) return " Phòng đã được gán trước đó!";
 
         PhongDieuTri phong = hospitalService.getDanhSachPhong().stream()
                 .filter(p -> p.getMaPhong().equals(maPhong))
                 .findFirst().orElse(null);
 
-        if (phong == null) return "❌ Không tìm thấy phòng!";
+        if (phong == null) return " Không tìm thấy phòng!";
 
         phong.setMaBacSi(maBacSi);
-        return "✅ Gán phòng thành công!";
+        return " Gán phòng thành công!";
     }
 
     // DELETE phòng khỏi bác sĩ
@@ -91,7 +90,7 @@ public class BacSiController {
                 .filter(b -> b.getMaBacSi().equals(maBacSi))
                 .findFirst().orElse(null);
 
-        if (bacSi == null) return "❌ Không tìm thấy bác sĩ!";
+        if (bacSi == null) return " Không tìm thấy bác sĩ!";
 
         bacSi.xoaMaPhong(maPhong);
 
@@ -126,6 +125,6 @@ public class BacSiController {
     @PostMapping("/phong")
     public String themPhong(@RequestBody PhongDieuTri p) {
         hospitalService.getDanhSachPhong().add(p);
-        return "✅ Thêm phòng thành công!";
+        return " Thêm phòng thành công!";
     }
 }

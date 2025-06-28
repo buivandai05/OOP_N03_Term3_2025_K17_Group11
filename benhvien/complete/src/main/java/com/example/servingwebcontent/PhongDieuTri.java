@@ -13,12 +13,12 @@ public class PhongDieuTri {
     private List<BenhNhan> dsBenhNhan;
     private String maBacSi;
 
-    // ✅ Constructor mặc định
+    //  Constructor mặc định
     public PhongDieuTri() {
         this.dsBenhNhan = new ArrayList<>();
     }
 
-    // ✅ Constructor đầy đủ
+    //  Constructor đầy đủ
     public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua, String maBacSi) {
         this.maPhong = maPhong;
         this.tenPhong = tenPhong;
@@ -28,7 +28,7 @@ public class PhongDieuTri {
         this.dsBenhNhan = new ArrayList<>();
     }
 
-    // ✅ Constructor không có mã bác sĩ
+    //  Constructor không có mã bác sĩ
     public PhongDieuTri(String maPhong, String tenPhong, String khoa, int sucChua) {
         this(maPhong, tenPhong, khoa, sucChua, null);
     }
