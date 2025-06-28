@@ -1,6 +1,6 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.BenhNhan;
+import com.example.servingwebcontent.model.BenhNhan;
 import com.example.servingwebcontent.service.HospitalService;
 import org.springframework.web.bind.annotation.*;
 

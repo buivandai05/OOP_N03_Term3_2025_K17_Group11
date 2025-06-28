@@ -1,7 +1,7 @@
 package com.example.servingwebcontent.controller;
 
-import com.example.servingwebcontent.BacSi;
-import com.example.servingwebcontent.PhongDieuTri;
+import com.example.servingwebcontent.model.BacSi;
+import com.example.servingwebcontent.model.PhongDieuTri;
 import com.example.servingwebcontent.service.HospitalService;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,8 +1,9 @@
 package com.example.servingwebcontent.service;
 
-import com.example.servingwebcontent.BenhNhan;
-import com.example.servingwebcontent.BacSi;
-import com.example.servingwebcontent.PhongDieuTri;
+import com.example.servingwebcontent.model.BacSi;
+import com.example.servingwebcontent.model.BenhNhan;
+import com.example.servingwebcontent.model.PhongDieuTri;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
