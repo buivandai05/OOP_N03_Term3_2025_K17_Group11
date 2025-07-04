@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Đăng Nhập - Hệ Thống Quản Lý Bệnh Viện</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .login-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 1rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    .login-title {
+      text-align: center;
+      color: #0d6efd;
+      margin-bottom: 30px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .form-label {
+      color: #0ab54d;
+      font-weight: 500;
+    }
+    .btn-login {
+      background-color: #0d6efd;
+      border: none;
+    }
+    .btn-login:hover {
+      background-color: #0b5ed7;
+    }
+    .alert {
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <div class="login-title">🏥 Đăng Nhập</div>
+
+    <div id="alert" class="alert alert-danger d-none" role="alert"></div>
+
+    <form id="loginForm">
+      <div class="mb-3">
+        <label for="account" class="form-label">Tài khoản</label>
+        <input type="text" name="account" class="form-control" id="account" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Mật khẩu</label>
+        <input type="password" name="password" class="form-control" id="password" required />
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-login text-white">Đăng nhập</button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const username = document.getElementById('account').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const alertBox = document.getElementById('alert');
+
+      fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          account: username,
+          password: password
+        })
+      })
+      .then(response => response.json().then(data => ({ status: response.status, body: data })))
+      .then(({ status, body }) => {
+        if (status === 200 && body.success) {
+          // Đăng nhập thành công
+          window.location.href = '/home';
+        } else {
+          // Đăng nhập thất bại
+          alertBox.classList.remove('d-none');
+          alertBox.textContent = body.message || 'Đăng nhập thất bại';
+        }
+      })
+      .catch(error => {
+        alertBox.classList.remove('d-none');
+        alertBox.textContent = 'Lỗi kết nối đến server.';
+        console.error('Login error:', error);
+      });
+    });
+  </script>
+
+</body>
+</html>

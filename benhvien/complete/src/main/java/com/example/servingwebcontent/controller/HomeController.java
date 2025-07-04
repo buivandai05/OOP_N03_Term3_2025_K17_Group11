@@ -17,8 +17,17 @@ public class HomeController {
     }
 
     @GetMapping("/")
+    public String redirectToLogin() {
+        return "redirect:/login"; // chuyển hướng về /login
+    }
+
+    @GetMapping("/login")
+    public String loginPage() {
+        return "login";
+    }
+
+    @GetMapping("/home")
     public String trangChu(Model model) {
-        // Thêm các số liệu thống kê
         model.addAttribute("tongBenhNhan", hospitalService.getTongSoBenhNhan());
         model.addAttribute("soPhongConTrong", hospitalService.getSoPhongConGiuongTrong());
         model.addAttribute("tongBacSi", hospitalService.getTongSoBacSi());
