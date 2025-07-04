@@ -17,12 +17,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String redirectToLogin() {
-        return "redirect:/login"; // chuyển hướng về /login
-    }
-
-    @GetMapping("/login")
-    public String loginPage() {
+    public String Login() {
         return "login";
     }
 
@@ -41,7 +36,7 @@ public class HomeController {
 
     @GetMapping("/benhnhan")
     public String benhNhanPage() {
-        return "BenhNhan"; // s
+        return "BenhNhan"; 
     }
 
     @GetMapping("/phong")

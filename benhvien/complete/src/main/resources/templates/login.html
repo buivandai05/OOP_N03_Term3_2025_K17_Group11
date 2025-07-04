@@ -71,7 +71,10 @@
       const password = document.getElementById('password').value.trim();
       const alertBox = document.getElementById('alert');
 
-      fetch('/api/auth/login', {
+      // Lấy URL đầy đủ theo môi trường hiện tại
+      const apiUrl = window.location.origin + '/api/auth/login';
+
+      fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -83,7 +86,7 @@
       .then(({ status, body }) => {
         if (status === 200 && body.success) {
           // Đăng nhập thành công
-          window.location.href = '/home';
+          window.location.href = window.location.origin + '/home';
         } else {
           // Đăng nhập thất bại
           alertBox.classList.remove('d-none');
