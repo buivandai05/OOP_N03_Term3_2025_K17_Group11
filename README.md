@@ -41,6 +41,10 @@
 ### 2. Lưu đồ thuật toán
 ![algo_diagram](https://github.com/user-attachments/assets/9b7eb24d-580c-4fdb-8ada-c0810dee4a15)
 
+### 3. Mô hình quan hệ 
+![image](https://github.com/user-attachments/assets/57366c7f-74e9-4fd0-9c59-fa088924ad4e)
+
+
 ---
 
 ## Giao diện trang chủ:
