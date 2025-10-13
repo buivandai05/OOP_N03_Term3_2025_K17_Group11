@@ -3,7 +3,7 @@
 ## 👥 Nhóm thực hiện: **OOP_Group 11**
 
 **Thành viên:**
-- 👩‍⚕️ Lê Thị Cẩm Ly - 23010411
+- 👩‍⚕️ Lê Thị Cẩm Ly - 23010411 (leader)
 - 👨‍⚕️ Bùi Văn Đại - 23010366
 - 👨‍⚕️ Vũ Huy Đô - 23017268
 
